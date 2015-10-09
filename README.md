@@ -10,11 +10,15 @@ slidenumbers: true
 
 <https://github.com/azat-co/you-dont-know-node>
 
+or
+
+PDF: <http://bit.ly/1VJWpQK>
+
 ---
 
 # Key Takeaways
 
-1. Event Loop: Brush-up on the core concept which enables the non-blocking I/O
+1. Event loop: Brush-up on the core concept which enables the non-blocking I/O
 1. Streams and buffers: Effective way to work with data
 1. Process and global: How to access more info
 
@@ -24,7 +28,7 @@ slidenumbers: true
 
 1. Event emitters: Crash course in the event-based pattern
 1. Clusters: Fork processes like a pro
-1. AsyncWrap, Domain and uncaughtException: Handling async errors
+1. Handling async errors: AsyncWrap, Domain and uncaughtException
 1. C++ addons: Contributing to the core and writing your own C++ addons
 
 ---
@@ -166,3 +170,52 @@ console.log("Hello SECON!");
 # Streams and Buffers
 
 ---
+
+# Process and global
+
+---
+
+# Event emitters
+
+---
+
+# Clusters
+
+```js
+var cluster = require('cluster');
+if (cluster.isMaster) {
+  for (var i = 0; i < numCPUs; i++) {
+    cluster.fork();
+  };
+} else if (cluster.isWorker) {
+… // your server code
+})
+```
+
+---
+
+# Cluster Demo
+
+1. Run `code/cluster.js` with node (`node cluster.js`).
+1. Install `loadtest` with npm: `$ npm install -g loadtest`
+1. Run load testing with: `$ loadtest  http://localhost:3000 -t 20 —c 10`
+
+Press control+c on the server terminal
+
+---
+
+# Handling Async Errors
+
+---
+
+# C++ Addons
+
+---
+
+# Q&A
+
+
+<https://github.com/azat-co/you-dont-know-node/issues>
+
+Twitter: @azat_co
+Email: hi@azat.co
