@@ -830,9 +830,9 @@ d.run(function() {
 
 ### Node and C++
 
-Create the `hell.cc` file:
+Create the `hello.cc` file:
 
-```c++
+```c
 #include <node.h>
 
 namespace demo {
@@ -850,9 +850,9 @@ using v8::Value;
 
 ### Node and C++
 
-Create the `hell.cc` file:
+Create the `hello.cc` file:
 
-```c++
+```c
 void Method(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
   args.GetReturnValue().Set(String::NewFromUtf8(isolate, "capital one"));
