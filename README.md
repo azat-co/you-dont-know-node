@@ -24,7 +24,7 @@ or
 
 1. Event loop: Brush-up on the core concept which enables the non-blocking I/O
 1. Streams and buffers: Effective way to work with data
-1. Process and global: How to access more info
+1. Global and process: How to access more info
 
 ---
 
@@ -83,7 +83,6 @@ System.out.println("Step: 1");
 System.out.println("Step: 2");
 Thread.sleep(1000);
 System.out.println("Step: 3");
-System.out.println("Step: 4");
 ```
 
 vs.
@@ -244,7 +243,7 @@ Data written to standard output is visible on the command line.
 To write to `stdout`, use the `write` function:
 
 ```js
-process.stdout.write('A simle message\n');
+process.stdout.write('A simple message\n');
 ```
 
 ---
@@ -336,27 +335,37 @@ fs.readFile('/etc/passwd', function (err, data) {
 
 ### Buffer methods and properties
 
-* buf.length
-* buf.write(string[, offset][, length][, encoding])
-* buf.toString([encoding][, start][, end])
-* buf.toJSON()
-* buf.equals(otherBuffer)
-* buf.compare(otherBuffer)
-* buf.copy(targetBuffer[, targetStart][, sourceStart][, sourceEnd])
-* buf.slice([start][, end])
-* buf.fill(value[, offset][, end])
+* `buf.length`
+* `buf.write(string[, offset][, length][, encoding])`
+* `buf.toString([encoding][, start][, end])`
+* `buf.toJSON()`
+
+---
+
+### Buffer methods and properties
+
+* `buf.equals(otherBuffer)`
+* `buf.compare(otherBuffer)`
+* `buf.copy(targetBuffer[, targetStart][, sourceStart][, sourceEnd])`
+* `buf.slice([start][, end])`
+* `buf.fill(value[, offset][, end])`
 
 ---
 
 ### Encodings
 
-* 'ascii'   - for 7 bit ASCII data only. Very fast, strips the high bit if set.
-* 'utf8'    - Multibyte encoded Unicode characters. Standard for the web.
-* 'utf16le' - 2 or 4 bytes, little endian encoded Unicode chars.
-* 'ucs2'    - Alias of 'utf16le'.
-* 'base64'  - Base64 string encoding.
-* 'binary'  - DEPRECATED Raw binary data into strings by using only the first 8 bits of each char.
-* 'hex'     - Encode each byte as two hexadecimal characters.
+* `ascii`   - for 7 bit ASCII data only. Very fast, strips the high bit if set.
+* `utf8`    - Multibyte encoded Unicode characters. Standard for the web.
+* `utf16le` - 2 or 4 bytes, little endian encoded Unicode chars.
+
+---
+
+### Encodings
+
+* `ucs2`    - Alias of 'utf16le'.
+* `base64`  - Base64 string encoding.
+* `binary`  - DEPRECATED Raw binary data into strings by using only the first 8 bits of each char.
+* `hex`     - Encode each byte as two hexadecimal characters.
 
 ---
 
@@ -380,9 +389,20 @@ $ node server-stream
 
 ---
 
+# Stream Resources
+
+<https://github.com/substack/stream-adventure>
+
+```
+$ sudo npm install -g stream-adventure
+$ stream-adventure
+```
+
+<https://github.com/substack/stream-handbook>
+
 ---
 
-# Process and global
+# Global and Process
 
 ---
 
