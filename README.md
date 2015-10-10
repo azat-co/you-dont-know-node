@@ -14,6 +14,10 @@ or
 
 PDF: <http://bit.ly/1VJWpQK>
 
+or
+
+`$ mkdir node_modules && npm install you-dont-know-node`
+
 ---
 
 # Key Takeaways
