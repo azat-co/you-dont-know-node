@@ -4,7 +4,7 @@
   "description": "You Don't Know Node.js",
   "main": "cluster.js",
   "scripts": {
-    "postinstall": "mv ./lib/node_modules/you-dont-know-node . && rm -rf ./etc  && rm -rf ./lib",
+    "postinstall": "node move.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": "https://github.com/azat-co/you-dont-know-node",
