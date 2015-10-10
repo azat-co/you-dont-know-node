@@ -382,18 +382,37 @@ $ node server-stream
 
 ---
 
-# Process
-
-* `process.pid`
-* `process.versions.v8`
-* `process.uptime()`
-* `process.memoryUsage()`
-
----
 
 # Global
 
-* `global.stats`
+* `global.process`
+* `global.__filename`
+* `global.__dirname`
+* `global.module`
+* `global.require`
+* `global.console`
+* `global.setInterval`
+* `global.setTimeout`
+
+---
+
+# Process
+
+* `process.pid`
+* `process.versions`
+* `process.arch`
+* `process.argv`
+* `process.env`
+
+---
+
+# More Process
+
+* `process.uptime()`
+* `process.memoryUsage()`
+* `process.cwd()`
+* `process.exit`
+* `process.on()`
 
 ---
 
