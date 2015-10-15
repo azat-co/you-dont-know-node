@@ -22,7 +22,7 @@ or
 
 # Key Takeaways
 
-1. Event loop: Brush-up on the core concept which enables the non-blocking I/O
+1. Event loop: Brush-up on the core concept which enables non-blocking I/O
 1. Streams and buffers: Effective way to work with data
 1. Global and process: How to access more info
 
@@ -69,8 +69,8 @@ Blog: webapplog.com
 
 ![inline](images/non-blocking.png)
 
-^This allows to process other tasks while IO-call not finished like this
-^Nginx vs. Apach
+^This allows processing other tasks while IO calls are unfinished like this
+^Nginx vs. Apache
 ^Blocking I/O is expensive!
 
 ---
@@ -196,7 +196,7 @@ Standard input streams contain data going into applications.
 
 This is achieved via a read operation.
 
-Input typically comes from the keyboard used to started the process.
+Input typically comes from the keyboard used to start the process.
 
 ---
 
@@ -356,7 +356,7 @@ fs.readFile('/etc/passwd', function (err, data) {
 
 * `ascii`   - for 7 bit ASCII data only. Very fast, strips the high bit if set.
 * `utf8`    - Multibyte encoded Unicode characters. Standard for the web.
-* `utf16le` - 2 or 4 bytes, little endian encoded Unicode chars.
+* `utf16le` - 2 or 4 bytes, little-endian encoded Unicode chars.
 
 ---
 
@@ -364,7 +364,7 @@ fs.readFile('/etc/passwd', function (err, data) {
 
 * `ucs2`    - Alias of 'utf16le'.
 * `base64`  - Base64 string encoding.
-* `binary`  - DEPRECATED Raw binary data into strings by using only the first 8 bits of each char.
+* `binary`  - (DEPRECATED) Raw binary data into strings by using only the first 8 bits of each char.
 * `hex`     - Encode each byte as two hexadecimal characters.
 
 ---
@@ -812,7 +812,7 @@ process.addListener('uncaughtException', function (err) {
 
 ### Domain
 
-This module is softly deprecated in 4.0 (most likey will be a separate from core module), but there's no alternatives in core as of now.
+This module is softly deprecated in 4.0 (most likey will be separate from core module), but there's no alternatives in core as of now.
 
 ---
 
