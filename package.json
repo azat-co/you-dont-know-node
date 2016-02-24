@@ -1,6 +1,6 @@
 {
   "name": "you-dont-know-node",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "description": "You Don't Know Node.js",
   "main": "cluster.js",
   "scripts": {
