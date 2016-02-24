@@ -869,6 +869,10 @@ d.run(function() {
 
 ---
 
+## How to Write C/C++ binding for your IoT, hardware, drone, smartdevice, etc.?
+
+---
+
 ### Node and C++
 
 Create the `hello.cc` file:
@@ -967,9 +971,9 @@ console.log(addon.hello()); // 'capital one'
 
 ---
 
-# Q&A :+1:
+# Q&A ❓🙋➡️😄
 
-Send questions to
+Send bugs :bug: to
 
 <https://github.com/azat-co/you-dont-know-node/issues>
 
