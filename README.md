@@ -1,7 +1,7 @@
 footer: © Capital One, 2015
 slidenumbers: true
 
-# You Don't Know Node.js
+# You Don't Know Node
 ## Quick Guide to The Best Features
 
 ---
