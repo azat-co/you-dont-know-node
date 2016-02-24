@@ -379,7 +379,7 @@ fs.readFile('/etc/passwd', function (err, data) {
 server-stream.js:
 
 ```js
-app.get('/stream1', function(req, res) {
+app.get('/stream', function(req, res) {
   var stream = fs.createReadStream(largeImagePath)
   stream.pipe(res)
 })
@@ -389,8 +389,17 @@ app.get('/stream1', function(req, res) {
 $ node server-stream
 ```
 
-<http://localhost:3000/stream1>
+<http://localhost:3000/stream>
 <http://localhost:3000/non-stream>
+
+---
+
+```
+X-Response-Time
+~300ms vs. 3-5s
+```
+
+
 
 ---
 
@@ -967,6 +976,12 @@ Create `hello.js` and include your C++ addon:
 ```js
 var addon = require('./build/Release/addon');
 console.log(addon.hello()); // 'capital one'
+```
+
+Run
+
+```
+$ node hello.js
 ```
 
 ---
