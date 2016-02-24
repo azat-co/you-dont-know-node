@@ -535,13 +535,13 @@ job.process()
 ### Listeners
 
 ```js
-emitter.listeners(eventName);
+emitter.listeners(eventName)
 
-emitter.on(eventName, listener);
+emitter.on(eventName, listener)
 
-emitter.once(eventName, listener);
+emitter.once(eventName, listener)
 
-emitter.removeListener(eventName, listener);
+emitter.removeListener(eventName, listener)
 ```
 
 ---
@@ -553,11 +553,11 @@ emitter.removeListener(eventName, listener);
 # Clusters
 
 ```js
-var cluster = require('cluster');
+var cluster = require('cluster')
 if (cluster.isMaster) {
   for (var i = 0; i < numCPUs; i++) {
     cluster.fork();
-  };
+  }
 } else if (cluster.isWorker) {
 … // your server code
 })
@@ -600,22 +600,22 @@ Advantages:
 ### pm2 Demo: Typical Express Server
 
 ```js
-var express = require('express');
-var port = 3000;
+var express = require('express')
+var port = 3000
 global.stats = {}
 console.log('worker (%s) is now listening to http://localhost:%s',
- process.pid, port);
-var app = express();
+ process.pid, port)
+var app = express()
 app.get('*', function(req, res) {
   if (!global.stats[process.pid]) global.stats[process.pid] = 1
   else global.stats[process.pid] += 1;
   var l ='cluser '
     + process.pid
     + ' responded \n';
-  console.log(l, global.stats);
-  res.status(200).send(l);
+  console.log(l, global.stats)
+  res.status(200).send(l)
 })
-app.listen(port);
+app.listen(port)
 ```
 
 ---
@@ -648,11 +648,11 @@ $ pm2 list
 ### Spawn Example
 
 ```js
-fs = require('fs');
-process = require('child_process');
-var p = process.spawn('node','program.js');
+fs = require('fs')
+process = require('child_process')
+var p = process.spawn('node','program.js')
 p.stdout.on('data', function(data)) {
- console.log('stdout: ' + data);
+  console.log('stdout: ' + data)
 });
 ```
 
@@ -661,11 +661,11 @@ p.stdout.on('data', function(data)) {
 ### Fork Example
 
 ```js
-fs = require('fs');
-process = require('child_process');
-var p = process.fork('program.js');
+fs = require('fs')
+process = require('child_process')
+var p = process.fork('program.js')
 p.stdout.on('data', function(data)) {
- console.log('stdout: ' + data);
+  console.log('stdout: ' + data)
 });
 ```
 
@@ -674,11 +674,11 @@ p.stdout.on('data', function(data)) {
 # Exec Example
 
 ```js
-fs = require('fs');
-process = require('child_process');
+fs = require('fs')
+process = require('child_process')
 var p = process.exec('node program.js', function (error, stdout, stderr) {
 if(error)
- console.log(error.code);
+  console.log(error.code)
 });
 ```
 
