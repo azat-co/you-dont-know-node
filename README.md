@@ -127,6 +127,19 @@ console.log('Step: 2')
 
 ## It's still possible to write blocking code in Node.js. :flushed:
 
+
+---
+
+# Blocking Node.js Code
+
+```js
+console.log('Step: 1')
+for (var i = 1; i<10000; i++) {
+  // CPU intensive blocking task
+}
+console.log('Step: 2')
+```
+
 ---
 
 # Blocking Node.js Code
