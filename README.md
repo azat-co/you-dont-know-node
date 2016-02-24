@@ -971,6 +971,16 @@ console.log(addon.hello()); // 'capital one'
 
 ---
 
+# Capital One
+
+We use Node a lot!
+
+<https://www.youtube.com/watch?v=BJPeLJhv1Ic>
+
+![inline](images/node-capital-one.png)
+
+---
+
 # Q&A ❓🙋➡️😄
 
 Send bugs :bug: to
