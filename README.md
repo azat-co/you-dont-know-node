@@ -699,9 +699,9 @@ Try/catch is not good enough.
 
 ```js
 try {
-  throw new Error('Fail!');
+  throw new Error('Fail!')
 } catch (e) {
-  console.log('Custom Error: ' + e.message);
+  console.log('Custom Error: ' + e.message)
 }
 ```
 
@@ -715,10 +715,10 @@ For sync errors try/catch works fine.
 ```js
 try {
   setTimeout(function () {
-      throw new Error("Fail!");
-  }, Math.round(Math.random()*100));
+      throw new Error('Fail!')
+  }, Math.round(Math.random()*100))
 } catch (e) {
-  console.log('Custom Error: ' + e.message);
+  console.log('Custom Error: ' + e.message)
 }
 ```
 
