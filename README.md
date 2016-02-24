@@ -134,8 +134,8 @@ console.log('Step: 2')
 
 ```js
 console.log('Step: 1')
-for (var i = 1; i<10000; i++) {
-  // CPU intensive blocking task
+for (var i = 1; i<1000000000; i++) {
+  // This will take 100-1000ms
 }
 console.log('Step: 2')
 ```
@@ -187,6 +187,13 @@ console.log("Hello SECON!");
 
 ---
 
+# How to Process Them Effectively?
+
+* Large binary data: video, audio
+* File system I/O
+* HTTP requests
+
+---
 
 ### Standard Streams
 
@@ -282,22 +289,7 @@ Note that `stdout` and `stderr` are special streams in Node as they are blocking
 
 ---
 
-## Teletype Context
-
-To check if the application is being run in TTY context, use the `isTTY`
-property:
-
-```
-$ node teletype.js
-// process.stdin.isTTY === true
-// process.stdout.isTTY === true
-
-$ echo "hello world" | node teletype.js
-// process.stdin.isTTY === false
-
-$ node teletype.js | cat
-// process.stdout.isTTY === false
-```
+## What data type to use for binary data?
 
 ---
 
@@ -419,6 +411,12 @@ $ stream-adventure
 
 ---
 
+* Where to store passwords?
+* How to create global variables (no `window` in Node)?
+* How to access CLI input, OS, platform, memory usage, versions, etc.?
+
+
+---
 
 # Global
 
@@ -457,6 +455,9 @@ $ stream-adventure
 
 ---
 
+### How to modularize and organize asynchronous code besides callbacks which are not very developmental scalable?
+
+---
 
 ### Event Emitters
 
@@ -479,18 +480,18 @@ In node.js an event can be described simply as a string with a corresponding cal
 ### Using Event Emitters
 
 ```js
-var events  = require('events');
-var emitter = new events.EventEmitter();
+var events  = require('events')
+var emitter = new events.EventEmitter()
 
 emitter.on('knock', function {
-    console.log("Who's there?");
+    console.log("Who's there?")
 });
 
 emitter.on('knock', function {
-    console.log("Go away!");
+    console.log("Go away!")
 });
 
-emitter.emit('knock');
+emitter.emit('knock')
 ```
 
 ---
@@ -498,17 +499,18 @@ emitter.emit('knock');
 ### Inheriting from EventEmitter
 
 ```js
-var util = require('util');
+// module.js
+var util = require('util')
 var Job = function Job() {
-    // ...
-    this.process = function() {
-        // ...
-        job.emit('done', { completedOn: new Date() });
-    }
-};
+  // ...
+  this.process = function() {
+      // ...
+      job.emit('done', { completedOn: new Date() })
+  }
+}
 
-util.inherits(Job, require('events').EventEmitter);
-module.exports = Job;
+util.inherits(Job, require('events').EventEmitter)
+module.exports = Job
 ```
 
 ---
@@ -516,14 +518,16 @@ module.exports = Job;
 ### Inheriting from EventEmitter
 
 ```js
-var job = new Job();
+// main.js
+var Job = require('./module.js')
+var job = new Job()
 
 job.on('done', function(details){
-  console.log('Job was completed at', details.completedOn);
-  job.removeAllListeners();
-});
+  console.log('Job was completed at', details.completedOn)
+  job.removeAllListeners()
+})
 
-job.process();
+job.process()
 ```
 
 ---
