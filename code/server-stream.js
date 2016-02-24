@@ -1,16 +1,39 @@
-var express = require('express');
-var port = 3000;
-global.stats = {}
-console.log('worker (%s) is now listening to http://localhost:%s',
- process.pid, port);
-var app = express();
-app.get('*', function(req, res) {
-  if (!global.stats[process.pid]) global.stats[process.pid] = 1
-  else global.stats[process.pid] += 1;
-  var l ='cluser '
-    + process.pid
-    + ' responded \n';
-  console.log(l, global.stats);
-  res.status(200).send(l);
+
+var express = require('express')
+var fs = require('fs')
+var path = require('path')
+var port = 3000
+var app = express()
+var responseTime = require('response-time')
+var largeImagePath = path.join(__dirname,'CapitalOne_Digital_Skills_Infographic_BW.jpg')
+
+app.use(responseTime())
+
+app.get('/non-stream', function(req, res) {
+  var file = fs.readFileSync(largeImagePath)
+  res.end(file)
 })
-app.listen(port);
+
+app.get('/non-stream2', function(req, res) {
+  var file = fs.readFile(largeImagePath, function(error, data){
+    res.end(data)
+  })
+})
+
+app.get('/stream', function(req, res) {
+  var stream = fs.createReadStream(largeImagePath)
+  stream.pipe(res)
+})
+
+
+app.get('/stream2', function(req, res) {
+  var stream = fs.createReadStream(largeImagePath)
+  stream.on('data', function(data) {
+    res.write(data)
+  })
+  stream.on('end', function() {
+    res.end()
+  })
+})
+
+app.listen(port)

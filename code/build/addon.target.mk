@@ -28,6 +28,7 @@ CFLAGS_C_Debug := \
 
 # Flags passed to only C++ files.
 CFLAGS_CC_Debug := \
+	-std=gnu++0x \
 	-fno-rtti \
 	-fno-exceptions \
 	-fno-threadsafe-statics \
@@ -40,10 +41,10 @@ CFLAGS_OBJC_Debug :=
 CFLAGS_OBJCC_Debug :=
 
 INCS_Debug := \
-	-I/Users/spq201/.node-gyp/0.12.7/include/node \
-	-I/Users/spq201/.node-gyp/0.12.7/src \
-	-I/Users/spq201/.node-gyp/0.12.7/deps/uv/include \
-	-I/Users/spq201/.node-gyp/0.12.7/deps/v8/include
+	-I/Users/azat/.node-gyp/5.1.0/include/node \
+	-I/Users/azat/.node-gyp/5.1.0/src \
+	-I/Users/azat/.node-gyp/5.1.0/deps/uv/include \
+	-I/Users/azat/.node-gyp/5.1.0/deps/v8/include
 
 DEFS_Release := \
 	'-DNODE_GYP_MODULE_NAME=addon' \
@@ -69,6 +70,7 @@ CFLAGS_C_Release := \
 
 # Flags passed to only C++ files.
 CFLAGS_CC_Release := \
+	-std=gnu++0x \
 	-fno-rtti \
 	-fno-exceptions \
 	-fno-threadsafe-statics \
@@ -81,10 +83,10 @@ CFLAGS_OBJC_Release :=
 CFLAGS_OBJCC_Release :=
 
 INCS_Release := \
-	-I/Users/spq201/.node-gyp/0.12.7/include/node \
-	-I/Users/spq201/.node-gyp/0.12.7/src \
-	-I/Users/spq201/.node-gyp/0.12.7/deps/uv/include \
-	-I/Users/spq201/.node-gyp/0.12.7/deps/v8/include
+	-I/Users/azat/.node-gyp/5.1.0/include/node \
+	-I/Users/azat/.node-gyp/5.1.0/src \
+	-I/Users/azat/.node-gyp/5.1.0/deps/uv/include \
+	-I/Users/azat/.node-gyp/5.1.0/deps/v8/include
 
 OBJS := \
 	$(obj).target/$(TARGET)/hello.o
