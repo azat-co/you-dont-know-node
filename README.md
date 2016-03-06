@@ -1,4 +1,4 @@
-footer: © Capital One, 2015
+footer: © Capital One, 2016
 slidenumbers: true
 
 # You Don't Know Node
@@ -396,7 +396,7 @@ emitter.removeListener(eventName, listener)
 
 ---
 
-# Problems with large data
+# Problems with Large Data
 
 * Speed: Too slow
 * Buffer limit: ~1Gb
@@ -571,7 +571,7 @@ fs.readFile('/etc/passwd', function (err, data) {
 
 ---
 
-### Buffer methods and properties
+### Buffer Methods and Properties
 
 * `buf.length`
 * `buf.write(string[, offset][, length][, encoding])`
@@ -580,7 +580,7 @@ fs.readFile('/etc/passwd', function (err, data) {
 
 ---
 
-### Buffer methods and properties
+### Buffer Methods and Properties
 
 * `buf.equals(otherBuffer)`
 * `buf.compare(otherBuffer)`
@@ -734,7 +734,7 @@ $ pm2 list
 
 ---
 
-# Spawn vs fork vs exec
+# Spawn vs Fork vs Exec
 
 * `require('child_process').spawn()` - large data, stream, no new V8 instance
 * `require('child_process').fork()` - new V8 instance, multiple workers
