@@ -145,18 +145,18 @@ console.log('Step: 2')
 # Blocking Node.js Code
 
 ```js
-var fs = require('fs');
+var fs = require('fs')
 
-var contents = fs.readFileSync('accounts.txt','utf8');
-console.log(contents);
-console.log('Hello Capital One\n');
+var contents = fs.readFileSync('accounts.txt','utf8')
+console.log(contents)
+console.log('Hello Ruby\n')
 
-var contents = fs.readFileSync('ips.txt','utf8');
-console.log(contents);
-console.log('Hello SECON!');
+var contents = fs.readFileSync('ips.txt','utf8')
+console.log(contents)
+console.log('Hello Node!')
 ```
 
-^data1->Hello Capital One->data2->Hello SECON!
+^data1->Hello Ruby->data2->Hello NODE!
 
 
 
@@ -170,249 +170,16 @@ var fs = require('fs');
 var contents = fs.readFile('accounts.txt','utf8', function(err,contents){
    console.log(contents);
 });
-console.log('Hello Capital One\n');
+console.log('Hello Python\n');
 
 
 var contents = fs.readFile('ips.txt','utf8', function(err,contents){
    console.log(contents);
 });
-console.log("Hello SECON!");
+console.log("Hello Node!");
 ```
 
-^Hello Capital One->Hello SECON->data1->data2
-
----
-
-# Streams and Buffers
-
----
-
-# How to Process Them Effectively?
-
-* Large binary data: video, audio
-* File system I/O
-* HTTP requests
-
----
-
-### Standard Streams
-
-Standard streams are I/O channels between an application and its
-execution environment.
-
-There are three standard streams:
-
-* standard input - `stdin`
-* standard output - `stdout`
-* standard error - `stderr`
-
-^Note that the execution environment is typically a shell terminal
-
----
-
-`stdin`
-
-Standard input streams contain data going into applications.
-
-This is achieved via a read operation.
-
-Input typically comes from the keyboard used to start the process.
-
----
-
-To listen in on data from stdin, use the `data` and `end` events:
-
-```js
-process.stdin.resume();
-process.stdin.setEncoding('utf8');
-
-process.stdin.on('data', function (chunk) {
-    console.log('chunk: ', chunk);
-});
-
-process.stdin.on('end', function () {
-    console.log('--- END ---');
-});
-```
-
----
-
-Notes:
-
-* `data` - input fed into the program. Depending on the size of
-the input, this event can trigger multiple times
-
-* an `end` event is necessary to signal the conclusion of the input
-stream
-
-* `stdin` is paused by default, and must be resumed before data can
-be read from it
-
----
-
-`stdout`
-
-The standard output streams contain data going out of an application.
-
-This is done via a write operation.
-
-Data written to standard output is visible on the command line.
-
----
-
-To write to `stdout`, use the `write` function:
-
-```js
-process.stdout.write('A simple message\n');
-```
-
----
-
-`stderr`
-
-The standard error stream is an output stream like `stdout`.
-
-It is used primarily to log messages and errors for the purpose of
-debugging.
-
----
-
-Writing to `stderr` is done similarly to `stdout`:
-
-```js
-process.stderr.write('An error message\n');
-```
-
----
-
-Note that `stdout` and `stderr` are special streams in Node as they are blocking!
-
----
-
-## What data type to use for binary data?
-
----
-
-### Buffers
-
-Binary data type, to create:
-
-* `new Buffer(size)`
-* `new Buffer(array)`
-* `new Buffer(buffer)`
-* `new Buffer(str[, encoding])`
-
-Docs: <http://bit.ly/1IeAcZ1>
-
----
-
-```js
-buf = new Buffer(26);
-for (var i = 0 ; i < 26 ; i++) {
-  buf[i] = i + 97; // 97 is ASCII a
-}
-buf // <Buffer 61 62 63 64 65 66 67 68 69 6a 6b 6c 6d 6e 6f 70 71 72 73 74 75 76 77 78 79 7a>
-```
-
-Buffer Convertion:
-
-```js
-buf.toString('ascii'); // outputs: abcdefghijklmnopqrstuvwxyz
-buf.toString('ascii', 0, 5); // outputs: abcde
-buf.toString('utf8', 0, 5); // outputs: abcde
-buf.toString(undefined, 0, 5); // encoding defaults to 'utf8', outputs abcde
-```
-
----
-
-### Remember fs?
-
-```
-fs.readFile('/etc/passwd', function (err, data) {
-  if (err) throw err;
-  console.log(data);
-});
-```
-
-`data` is buffer!
-
----
-
-### Buffer methods and properties
-
-* `buf.length`
-* `buf.write(string[, offset][, length][, encoding])`
-* `buf.toString([encoding][, start][, end])`
-* `buf.toJSON()`
-
----
-
-### Buffer methods and properties
-
-* `buf.equals(otherBuffer)`
-* `buf.compare(otherBuffer)`
-* `buf.copy(targetBuffer[, targetStart][, sourceStart][, sourceEnd])`
-* `buf.slice([start][, end])`
-* `buf.fill(value[, offset][, end])`
-
----
-
-### Encodings
-
-* `ascii`   - for 7 bit ASCII data only. Very fast, strips the high bit if set.
-* `utf8`    - Multibyte encoded Unicode characters. Standard for the web.
-* `utf16le` - 2 or 4 bytes, little-endian encoded Unicode chars.
-
----
-
-### Encodings
-
-* `ucs2`    - Alias of 'utf16le'.
-* `base64`  - Base64 string encoding.
-* `binary`  - (DEPRECATED) Raw binary data into strings by using only the first 8 bits of each char.
-* `hex`     - Encode each byte as two hexadecimal characters.
-
----
-
-# Streams and Buffer Demo
-
-server-stream.js:
-
-```js
-app.get('/stream', function(req, res) {
-  var stream = fs.createReadStream(largeImagePath)
-  stream.pipe(res)
-})
-```
-
-```
-$ node server-stream
-```
-
-<http://localhost:3000/stream>
-<http://localhost:3000/non-stream>
-
----
-
-```
-X-Response-Time
-~300ms vs. 3-5s
-```
-
-
-
----
-
-# Stream Resources
-
-<https://github.com/substack/stream-adventure>
-
-```
-$ sudo npm install -g stream-adventure
-$ stream-adventure
-```
-
-<https://github.com/substack/stream-handbook>
+^Hello Python->Hello Node->data1->data2
 
 ---
 
@@ -460,6 +227,232 @@ $ stream-adventure
 
 ---
 
+# Streams and Buffers
+
+---
+
+# How to Process Them Effectively?
+
+* Large binary data: video, audio
+* File system I/O
+* HTTP requests
+
+---
+
+### Standard Streams
+
+Standard streams are I/O channels between an application and its
+execution environment.
+
+There are three standard streams:
+
+* standard input - `stdin`
+* standard output - `stdout`
+* standard error - `stderr`
+
+^Note that the execution environment is typically a shell terminal
+
+---
+
+`stdin`
+
+Standard input streams contain data going into applications.
+
+This is achieved via a read operation.
+
+Input typically comes from the keyboard used to start the process.
+
+---
+
+To listen in on data from stdin, use the `data` and `end` events:
+
+```js
+process.stdin.resume()
+process.stdin.setEncoding('utf8')
+
+process.stdin.on('data', function (chunk) {
+    console.log('chunk: ', chunk)
+})
+
+process.stdin.on('end', function () {
+    console.log('--- END ---')
+})
+```
+
+---
+
+Notes:
+
+* `data` - input fed into the program. Depending on the size of
+the input, this event can trigger multiple times
+
+* an `end` event is necessary to signal the conclusion of the input
+stream
+
+* `stdin` is paused by default, and must be resumed before data can
+be read from it
+
+---
+
+`stdout`
+
+The standard output streams contain data going out of an application.
+
+This is done via a write operation.
+
+Data written to standard output is visible on the command line.
+
+---
+
+To write to `stdout`, use the `write` function:
+
+```js
+process.stdout.write('A simple message\n')
+```
+
+---
+
+`stderr`
+
+The standard error stream is an output stream like `stdout`.
+
+It is used primarily to log messages and errors for the purpose of
+debugging.
+
+---
+
+Writing to `stderr` is done similarly to `stdout`:
+
+```js
+process.stderr.write('An error message\n')
+```
+
+---
+
+Note that `stdout` and `stderr` are special streams in Node as they are blocking!
+
+---
+
+## What data type to use for binary data?
+
+---
+
+### Buffers
+
+Binary data type, to create:
+
+* `new Buffer(size)`
+* `new Buffer(array)`
+* `new Buffer(buffer)`
+* `new Buffer(str[, encoding])`
+
+Docs: <http://bit.ly/1IeAcZ1>
+
+---
+
+```js
+buf = new Buffer(26)
+for (var i = 0 ; i < 26 ; i++) {
+  buf[i] = i + 97 // 97 is ASCII a
+}
+buf // <Buffer 61 62 63 64 65 66 67 68 69 6a 6b 6c 6d 6e 6f 70 71 72 73 74 75 76 77 78 79 7a>
+```
+
+Buffer Convertion:
+
+```js
+buf.toString('ascii') // outputs: abcdefghijklmnopqrstuvwxyz
+buf.toString('ascii', 0, 5) // outputs: abcde
+buf.toString('utf8', 0, 5) // outputs: abcde
+buf.toString(undefined, 0, 5) // encoding defaults to 'utf8', outputs abcde
+```
+
+---
+
+### Remember fs?
+
+```js
+fs.readFile('/etc/passwd', function (err, data) {
+  if (err) throw err
+  console.log(data)
+});
+```
+
+`data` is buffer!
+
+---
+
+### Buffer methods and properties
+
+* `buf.length`
+* `buf.write(string[, offset][, length][, encoding])`
+* `buf.toString([encoding][, start][, end])`
+* `buf.toJSON()`
+
+---
+
+### Buffer methods and properties
+
+* `buf.equals(otherBuffer)`
+* `buf.compare(otherBuffer)`
+* `buf.copy(targetBuffer[, targetStart][, sourceStart][, sourceEnd])`
+* `buf.slice([start][, end])`
+* `buf.fill(value[, offset][, end])`
+
+---
+
+### Encodings
+
+```
+ascii utf8 utf16le
+ucs2 base64 binary
+char hex
+```
+
+---
+
+# Streams and Buffer Demo
+
+server-stream.js:
+
+```js
+app.get('/stream', function(req, res) {
+  var stream = fs.createReadStream(largeImagePath)
+  stream.pipe(res)
+})
+```
+
+```
+$ node server-stream
+```
+
+<http://localhost:3000/stream>
+<http://localhost:3000/non-stream>
+
+---
+
+# DevTools
+
+```
+X-Response-Time
+~300ms vs. 3-5s
+```
+
+---
+
+# Stream Resources
+
+<https://github.com/substack/stream-adventure>
+
+```
+$ sudo npm install -g stream-adventure
+$ stream-adventure
+```
+
+<https://github.com/substack/stream-handbook>
+
+---
+
 # Event emitters
 
 ---
@@ -492,13 +485,13 @@ In node.js an event can be described simply as a string with a corresponding cal
 var events  = require('events')
 var emitter = new events.EventEmitter()
 
-emitter.on('knock', function {
-    console.log("Who's there?")
-});
+emitter.on('knock', function() {
+  console.log('Who\'s there?')
+})
 
-emitter.on('knock', function {
-    console.log("Go away!")
-});
+emitter.on('knock', function() {
+  console.log('Go away!')
+})
 
 emitter.emit('knock')
 ```
@@ -508,13 +501,13 @@ emitter.emit('knock')
 ### Inheriting from EventEmitter
 
 ```js
-// module.js
+// job.js
 var util = require('util')
 var Job = function Job() {
   // ...
   this.process = function() {
-      // ...
-      job.emit('done', { completedOn: new Date() })
+    // ...
+    job.emit('done', { completedOn: new Date() })
   }
 }
 
@@ -527,8 +520,8 @@ module.exports = Job
 ### Inheriting from EventEmitter
 
 ```js
-// main.js
-var Job = require('./module.js')
+// weekly.js
+var Job = require('./job.js')
 var job = new Job()
 
 job.on('done', function(details){
@@ -545,11 +538,8 @@ job.process()
 
 ```js
 emitter.listeners(eventName)
-
 emitter.on(eventName, listener)
-
 emitter.once(eventName, listener)
-
 emitter.removeListener(eventName, listener)
 ```
 
@@ -565,10 +555,10 @@ emitter.removeListener(eventName, listener)
 var cluster = require('cluster')
 if (cluster.isMaster) {
   for (var i = 0; i < numCPUs; i++) {
-    cluster.fork();
+    cluster.fork()
   }
 } else if (cluster.isWorker) {
-… // your server code
+  // your server code
 })
 ```
 
@@ -586,9 +576,9 @@ Press control+c on the server terminal
 
 # Cluster Libraries
 
-* Core cluster
-* strong-cluster-control (https://github.com/strongloop/strong-cluster-control), or `$ slc run`
-* pm2 (https://github.com/Unitech/pm2)
+* Core cluster: lean and mean
+* strong-cluster-control (https://github.com/strongloop/strong-cluster-control), or `$ slc run`: good choice
+* pm2 (https://github.com/Unitech/pm2): good choice
 
 ---
 
@@ -659,10 +649,10 @@ $ pm2 list
 ```js
 fs = require('fs')
 process = require('child_process')
-var p = process.spawn('node','program.js')
+var p = process.spawn('node', 'program.js')
 p.stdout.on('data', function(data)) {
   console.log('stdout: ' + data)
-});
+})
 ```
 
 ---
@@ -675,7 +665,7 @@ process = require('child_process')
 var p = process.fork('program.js')
 p.stdout.on('data', function(data)) {
   console.log('stdout: ' + data)
-});
+})
 ```
 
 ---
@@ -686,9 +676,8 @@ p.stdout.on('data', function(data)) {
 fs = require('fs')
 process = require('child_process')
 var p = process.exec('node program.js', function (error, stdout, stderr) {
-if(error)
-  console.log(error.code)
-});
+  if (error) console.log(error.code)
+})
 ```
 
 ---
@@ -724,7 +713,7 @@ For sync errors try/catch works fine.
 ```js
 try {
   setTimeout(function () {
-      throw new Error('Fail!')
+    throw new Error('Fail!')
   }, Math.round(Math.random()*100))
 } catch (e) {
   console.log('Custom Error: ' + e.message)
@@ -767,12 +756,12 @@ server.on('error', function (err) {
 ### on('error') Chained Method Example
 
 ```js
-var http = require(‘http’);
+var http = require(‘http’)
 var server = http.createServer(app)
   .on('error', function(e) {
-    console.log(‘Failed to create server’);
-    console.error(e);
-    process.exit(1);
+    console.log(‘Failed to create server’)
+    console.error(e)
+    process.exit(1)
   })
 ```
 
@@ -783,11 +772,11 @@ var server = http.createServer(app)
 ```js
 var req = http.request(options, function(res) {
   // … processing the response
-});
+})
 
 req.on('error', function(e) {
-  console.log('problem with request: ' + e.message);
-});
+  console.log('problem with request: ' + e.message)
+})
 ```
 
 ---
@@ -819,19 +808,19 @@ process.addListener('uncaughtException', handle)
 
 ```js
 process.on('uncaughtException', function (err) {
-  console.error('uncaughtException: ', err.message);
-  console.error(err.stack);
-  process.exit(1);
-});
+  console.error('uncaughtException: ', err.message)
+  console.error(err.stack)
+  process.exit(1)
+})
 ```
 
 or
 
 ```js
 process.addListener('uncaughtException', function (err) {
-  console.error('uncaughtException: ', err.message);
-  console.error(err.stack);
-  process.exit(1);
+  console.error('uncaughtException: ', err.message)
+  console.error(err.stack)
+  process.exit(1)
 ```
 
 ---
@@ -845,13 +834,13 @@ This module is softly deprecated in 4.0 (most likey will be separate from core m
 ### Domain Example
 
 ```js
-var domain = require('domain').create();
+var domain = require('domain').create()
 domain.on('error', function(error){
-  console.log(error);
-});
+  console.log(error)
+})
 domain.run(function(){
-  throw new Error('Failed!');
-});
+  throw new Error('Failed!')
+})
 ```
 
 ---
@@ -861,14 +850,14 @@ domain.run(function(){
 domain-async.js:
 
 ```js
-var d = require('domain').create();
+var d = require('domain').create()
 d.on('error', function(e) {
-   console.log('Custom Error: ' + e);
-});
+   console.log('Custom Error: ' + e)
+})
 d.run(function() {
   setTimeout(function () {
-    throw new Error('Failed!');
-  }, Math.round(Math.random()*100));
+    throw new Error('Failed!')
+  }, Math.round(Math.random()*100))
 });
 ```
 
@@ -959,7 +948,7 @@ $ node-gyp configure
 $ node-gyp build
 ```
 
-Check for compiled .node files in build/Release/
+Check for compiled `.node` files in build/Release/
 
 ---
 
@@ -974,8 +963,8 @@ Check for compiled .node files in build/Release/
 Create `hello.js` and include your C++ addon:
 
 ```js
-var addon = require('./build/Release/addon');
-console.log(addon.hello()); // 'capital one'
+var addon = require('./build/Release/addon')
+console.log(addon.hello()) // 'capital one'
 ```
 
 Run
