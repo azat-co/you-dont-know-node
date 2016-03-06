@@ -1083,7 +1083,7 @@ We use Node a lot!
 
 ---
 
-# 30-second Summary
+# 30-Second Summary
 
 1. Event Emitters
 1. Streams
