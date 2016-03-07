@@ -2,7 +2,7 @@ footer: © Capital One, 2016
 slidenumbers: true
 
 # You Don't Know Node
-## Guide to Node's Core Features
+## Quick Intro to 6 Core Features
 
 ---
 
@@ -423,10 +423,19 @@ emitter.removeListener(eventName, listener)
 
 ---
 
-## Streams inherit from Event Emitter
+## Streams Inherit from Event Emitter
 
 ---
-`process.stdin`
+
+# Streams are Everywhere!
+
+* HTTP requests and responses
+* Standard input/output
+* File reads and writes
+
+---
+
+# `process.stdin`
 
 Standard input streams contain data going into applications.
 
@@ -466,7 +475,21 @@ be read from it
 
 ---
 
-`stdout`
+```js
+var readable = getReadableStreamSomehow()
+readable.on('readable', () => {
+  var chunk
+  while (null !== (chunk = readable.read())) {
+    console.log('got %d bytes of data', chunk.length)
+  }
+})
+```
+
+^readabl.read is sync but the chunks are small
+
+---
+
+# `process.stdout`
 
 The standard output streams contain data going out of an application.
 
@@ -475,6 +498,8 @@ This is done via a write operation.
 Data written to standard output is visible on the command line.
 
 ---
+
+# Writable Stream
 
 To write to `stdout`, use the `write` function:
 
