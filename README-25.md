@@ -2,7 +2,7 @@ footer: © Capital One, 2016
 slidenumbers: true
 
 # You Don't Know Node
-## Quick Intro to 6 Core Features
+## 5 Cool Core Node Features Every Node Developer Must Know
 
 
 ---
@@ -35,24 +35,15 @@ Blog: webapplog.com
 
 ---
 
-TK
+![inline](images/azats-books-covers.png)
 
 ---
 
-# Event Loop
+# Most apps wait for input/output which are the most expensive tasks
 
 ---
 
-![inline](images/non-blocking.png)
-
-^This allows processing other tasks while IO calls are unfinished like this
-^Nginx vs. Apache
-^Blocking I/O is expensive!
-
----
-
-
-### Basic Event Loop Example
+### Java Sleep
 
 ```java
 System.out.println("Step: 1");
@@ -61,7 +52,13 @@ Thread.sleep(1000);
 System.out.println("Step: 3");
 ```
 
-vs.
+---
+
+![inline](images/threading_java.png)
+
+---
+
+## Node "Sleep"
 
 ```js
 console.log('Step: 1')
@@ -73,7 +70,7 @@ console.log('Step: 2')
 
 ---
 
-## Thinking in Async Code
+## Process Multiple Tasks
 
 ```js
 console.log('Step: 1')
@@ -85,17 +82,33 @@ console.log('Step: 2')
 // console.log('Step 4')
 ```
 
-
 ---
 
-![inline](images/threading_java.png)
-
+# Event Loop
 
 ---
 
 ![inline](images/threading_node.png)
 
 ^This is in contrast to today's more common concurrency model where OS threads are employed. Thread-based networking is relatively inefficient and very difficult to use. Furthermore, users of Node are free from worries of dead-locking the process --- there are no locks
+
+
+---
+
+# Single thread - worry free
+
+---
+
+# Mutli-threading is like a nuclear device
+
+---
+
+![inline](images/non-blocking.png)
+
+^This allows processing other tasks while IO calls are unfinished like this
+^Nginx vs. Apache
+^Blocking I/O is expensive!
+
 
 
 ---
@@ -192,19 +205,8 @@ console.log("Hello Node!")
 ---
 
 
-# `global.require`
+# `global.require()`
 
----
-
-# `global.console`
-
----
-
-# `global.setInterval`
-
----
-
-# `global.setTimeout`
 
 ---
 
@@ -298,23 +300,6 @@ fs.readdir(source, function (err, files) {
 
 ---
 
-### Event Emitters
-
-Event emitter is something that triggers an event to which anyone can listen.
-
-
-^In node.js an event can be described simply as a string with a corresponding callback.
-
----
-
-### Event Emitters
-
-* Event handling in Node uses the observer pattern
-* An event, or subject, keeps track of all functions that are associated with it
-* These associated functions, known as observers, are executed when the given event is triggered
-
----
-
 ### Using Event Emitters
 
 ```js
@@ -368,16 +353,6 @@ job.on('done', function(details){
 job.process()
 ```
 
----
-
-### Listeners
-
-```js
-emitter.listeners(eventName)
-emitter.on(eventName, listener)
-emitter.once(eventName, listener)
-emitter.removeListener(eventName, listener)
-```
 
 ---
 
@@ -450,30 +425,7 @@ process.stdin.on('end', function () {
 })
 ```
 
----
 
-Notes:
-
-* `data` - input fed into the program. Depending on the size of
-the input, this event can trigger multiple times
-
-* an `end` event is necessary to signal the conclusion of the input
-stream
-
-* `stdin` is paused by default, and must be resumed before data can
-be read from it
-
----
-
-```js
-var readable = getReadableStreamSomehow()
-readable.on('readable', () => {
-  var chunk
-  while (null !== (chunk = readable.read())) {
-    console.log('got %d bytes of data', chunk.length)
-  }
-})
-```
 
 ^readabl.read is sync but the chunks are small
 
@@ -545,87 +497,7 @@ r.pipe(z).pipe(w)
 
 ---
 
-### Buffers
-
-Binary data type, to create:
-
-* `new Buffer(size)`
-* `new Buffer(array)`
-* `new Buffer(buffer)`
-* `new Buffer(str[, encoding])`
-
-Docs: <http://bit.ly/1IeAcZ1>
-
----
-
-# Working with Buffer
-
-```js
-// buf.js
-var buf = new Buffer(26)
-for (var i = 0 ; i < 26 ; i++) {
-  buf[i] = i + 97 // 97 is ASCII a
-}
-console.log(buf) // <Buffer 61 62 63 64 65 66 67 68 69 6a 6b 6c 6d 6e 6f 70 71 72 73 74 75 76 77 78 79 7a>
-console.log(buf.toString('utf8')) // abcdefghijklmnopqrstuvwxyz
-```
-
----
-
-# Buffer Convertion
-
-```js
-buf.toString('ascii') // outputs: abcdefghijklmnopqrstuvwxyz
-buf.toString('ascii', 0, 5) // outputs: abcde
-buf.toString('utf8', 0, 5) // outputs: abcde
-buf.toString(undefined, 0, 5) // encoding defaults to 'utf8', outputs abcde
-```
-
----
-
-### Remember fs?
-
-```js
-fs.readFile('/etc/passwd', function (err, data) {
-  if (err) return console.error(err)
-  console.log(data)
-});
-```
-
-`data` is buffer!
-
----
-
-### Buffer Methods and Properties
-
-* `buf.length`
-* `buf.write(string[, offset][, length][, encoding])`
-* `buf.toString([encoding][, start][, end])`
-* `buf.toJSON()`
-
----
-
-### Buffer Methods and Properties
-
-* `buf.equals(otherBuffer)`
-* `buf.compare(otherBuffer)`
-* `buf.copy(targetBuffer[, targetStart][, sourceStart][, sourceEnd])`
-* `buf.slice([start][, end])`
-* `buf.fill(value[, offset][, end])`
-
----
-
-### Encodings
-
-```
-ascii utf8 utf16le
-ucs2 base64 binary
-char hex
-```
-
----
-
-# Streams and Buffer Demo
+# Streams Demo
 
 server-stream.js:
 
@@ -769,44 +641,6 @@ $ pm2 list
 
 ---
 
-### Spawn Example
-
-```js
-fs = require('fs')
-process = require('child_process')
-var p = process.spawn('node', 'program.js')
-p.stdout.on('data', function(data)) {
-  console.log('stdout: ' + data)
-})
-```
-
----
-
-### Fork Example
-
-```js
-fs = require('fs')
-process = require('child_process')
-var p = process.fork('program.js')
-p.stdout.on('data', function(data)) {
-  console.log('stdout: ' + data)
-})
-```
-
----
-
-# Exec Example
-
-```js
-fs = require('fs')
-process = require('child_process')
-var p = process.exec('node program.js', function (error, stdout, stderr) {
-  if (error) console.log(error.code)
-})
-```
-
----
-
 # How to handle async errors?
 
 ---
@@ -869,49 +703,9 @@ The app crashes! How to deal with it?
 
 ---
 
-### on('error')
-
-Anything that inherits from or creates an instance of the above: Express, LoopBack, Sails, Hapi, etc.
-
-```js
-server.on('error', function (err) {
-  console.error(err)
-})
-```  
-
----
-
-### on('error') Chained Method Example
-
-```js
-var http = require(‘http’)
-var server = http.createServer(app)
-  .on('error', function(e) {
-    console.log(‘Failed to create server’)
-    console.error(e)
-    process.exit(1)
-  })
-```
-
----
-
-### on(‘error’) Named Variable Example
-
-```js
-var req = http.request(options, function(res) {
-  // … processing the response
-})
-
-req.on('error', function(e) {
-  console.log('problem with request: ' + e.message)
-})
-```
-
----
-
 ### uncaughtException
 
-`uncaughtException` is a very crude mechanism for exception handling. An unhandled exception means your application - and by extension Node.js itself - is in an undefined state. Blindly resuming means anything could happen.
+^`uncaughtException` is a very crude mechanism for exception handling. An unhandled exception means your application - and by extension Node.js itself - is in an undefined state. Blindly resuming means anything could happen.
 
 ---
 
@@ -927,28 +721,6 @@ or
 
 ```js
 process.addListener('uncaughtException', handle)
-```
-
----
-
-
-### uncaughtException Expanded Examples
-
-```js
-process.on('uncaughtException', function (err) {
-  console.error('uncaughtException: ', err.message)
-  console.error(err.stack)
-  process.exit(1)
-})
-```
-
-or
-
-```js
-process.addListener('uncaughtException', function (err) {
-  console.error('uncaughtException: ', err.message)
-  console.error(err.stack)
-  process.exit(1)
 ```
 
 ---
@@ -1103,24 +875,14 @@ $ node hello.js
 
 ---
 
-# Capital One
-
-We use Node a lot!
-
-<https://www.youtube.com/watch?v=BJPeLJhv1Ic>
-
-![inline](images/node-capital-one.png)
-
----
-
 # 30-Second Summary
 
 1. Event Emitters
 1. Streams
-1. Buffers
 1. Clusters
-1. C++ Addons
 1. Domain
+1. C++ Addons
+
 
 ---
 

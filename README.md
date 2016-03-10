@@ -35,24 +35,15 @@ Blog: webapplog.com
 
 ---
 
-TK
+![inline](images/azats-books-covers.png)
 
 ---
 
-# Event Loop
+# Most apps wait for input/output which are the most expensive tasks
 
 ---
 
-![inline](images/non-blocking.png)
-
-^This allows processing other tasks while IO calls are unfinished like this
-^Nginx vs. Apache
-^Blocking I/O is expensive!
-
----
-
-
-### Basic Event Loop Example
+### Java Sleep
 
 ```java
 System.out.println("Step: 1");
@@ -61,7 +52,13 @@ Thread.sleep(1000);
 System.out.println("Step: 3");
 ```
 
-vs.
+---
+
+![inline](images/threading_java.png)
+
+---
+
+## Node "Sleep"
 
 ```js
 console.log('Step: 1')
@@ -73,7 +70,7 @@ console.log('Step: 2')
 
 ---
 
-## Thinking in Async Code
+## Process Multiple Tasks
 
 ```js
 console.log('Step: 1')
@@ -85,17 +82,33 @@ console.log('Step: 2')
 // console.log('Step 4')
 ```
 
-
 ---
 
-![inline](images/threading_java.png)
-
+# Event Loop
 
 ---
 
 ![inline](images/threading_node.png)
 
 ^This is in contrast to today's more common concurrency model where OS threads are employed. Thread-based networking is relatively inefficient and very difficult to use. Furthermore, users of Node are free from worries of dead-locking the process --- there are no locks
+
+
+---
+
+# Single thread - worry free
+
+---
+
+# Mutli-threading is like a nuclear device
+
+---
+
+![inline](images/non-blocking.png)
+
+^This allows processing other tasks while IO calls are unfinished like this
+^Nginx vs. Apache
+^Blocking I/O is expensive!
+
 
 
 ---
@@ -192,19 +205,19 @@ console.log("Hello Node!")
 ---
 
 
-# `global.require`
+# `global.require()`
 
 ---
 
 # `global.console`
 
----
 
-# `global.setInterval`
 
----
+# `global.setInterval()`
 
-# `global.setTimeout`
+
+
+# `global.setTimeout()`
 
 ---
 
