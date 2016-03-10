@@ -4,52 +4,12 @@ slidenumbers: true
 # You Don't Know Node
 ## Quick Intro to 6 Core Features
 
----
-
-# Slides :page_facing_up:
-
-<https://github.com/azat-co/you-dont-know-node>
-
-or
-
-PDF: <http://bit.ly/1VJWpQK>
-
-or
-
-`$ mkdir node_modules && npm install you-dont-know-node`
 
 ---
 
 # Better Apps—Better Life
 
 ^Big idea: Node has some cool core features. Node is everywhere. What if the world can be a better place if more developers master Node?
-
-
-
----
-
-# Disclaimer
-
-How to drink from a firehose: If we skip some slides (and we'll do)—that's by design to encourage further exploration on your own.
-
-🔥
-
----
-
-# Key Takeaways
-
-1. Event loop: Brush-up on the core concept which enables non-blocking I/O
-1. Streams and buffers: Effective way to work with data
-1. Global and process: How to access more info
-
----
-
-# More Key Takeaways
-
-1. Event emitters: Crash course in the event-based pattern
-1. Clusters: Fork processes like a pro
-1. Handling async errors: AsyncWrap, Domain and uncaughtException
-1. C++ addons: Contributing to the core and writing your own C++ addons
 
 ---
 
@@ -75,29 +35,7 @@ Blog: webapplog.com
 
 ---
 
-![left 100%](images/proexpress.png)
-![right 100%](images/practicalnode.png)
-
----
-
-![left 100%](images/reactquickly.jpg)
-
-![right 100%](images/fullstackjavascript.jpg)
-
----
-
-![left 100%](images/reactquickly.jpg)
-
-FREE: 7+ hours of videos: <http://reactquickly.co> and <http://bit.ly/1Umn0pC>
-
-![right 100%](images/fullstackjavascript.jpg)
-
-
----
-
-# Don't Buy the Books
-
-😉
+TK
 
 ---
 
@@ -171,6 +109,7 @@ console.log('Step: 2')
 # Blocking Node.js Code
 
 ```js
+// blocking.js
 console.log('Step: 1')
 for (var i = 1; i<1000000000; i++) {
   // This will take 100-1000ms
@@ -192,9 +131,10 @@ console.log('Hello Ruby\n')
 var contents = fs.readFileSync('ips.txt','utf8')
 console.log(contents)
 console.log('Hello Node!')
+//data1->Hello Ruby->data2->Hello NODE!
 ```
 
-^data1->Hello Ruby->data2->Hello NODE!
+
 
 
 ---
@@ -202,25 +142,23 @@ console.log('Hello Node!')
 # Non-Blocking Node.js Code
 
 ```js
-var fs = require('fs');
+var fs = require('fs')
 
 var contents = fs.readFile('accounts.txt','utf8', function(err,contents){
-   console.log(contents);
-});
-console.log('Hello Python\n');
-
+   console.log(contents)
+})
+console.log('Hello Python\n')
 
 var contents = fs.readFile('ips.txt','utf8', function(err,contents){
-   console.log(contents);
-});
-console.log("Hello Node!");
+   console.log(contents)
+})
+console.log("Hello Node!")
+//Hello Python->Hello Node->data1->data2
 ```
-
-^Hello Python->Hello Node->data1->data2
 
 ---
 
-# Global and Process
+# Node != Browser JavaScript
 
 ---
 
@@ -233,34 +171,86 @@ console.log("Hello Node!");
 
 # Global
 
-* `global.process`
-* `global.__filename`
-* `global.__dirname`
-* `global.module`
-* `global.require`
-* `global.console`
-* `global.setInterval`
-* `global.setTimeout`
+---
+
+# `global.process`
+
+---
+
+# `global.__filename`
+
+---
+
+# `global.__dirname`
+
+
+---
+
+
+# `global.module`
+
+---
+
+
+# `global.require`
+
+---
+
+# `global.console`
+
+---
+
+# `global.setInterval`
+
+---
+
+# `global.setTimeout`
 
 ---
 
 # Process
 
-* `process.pid`
-* `process.versions`
-* `process.arch`
-* `process.argv`
-* `process.env`
+---
+
+# `process.pid`
 
 ---
 
-# More Process
+# `process.versions`
 
-* `process.uptime()`
-* `process.memoryUsage()`
-* `process.cwd()`
-* `process.exit`
-* `process.on()`
+---
+
+# `process.arch`
+
+---
+
+# `process.argv`
+
+---
+
+# `process.env`
+
+---
+
+
+# `process.uptime()`
+
+---
+
+
+# `process.memoryUsage()`
+
+---
+
+# `process.cwd()`
+
+---
+
+# `process.exit()`
+
+---
+
+# `process.on()`
 
 ---
 
@@ -297,6 +287,10 @@ fs.readdir(source, function (err, files) {
 })
 ```
 
+---
+
+
+## Callbacks are not very developmental scalable 😞
 
 ---
 
@@ -304,17 +298,12 @@ fs.readdir(source, function (err, files) {
 
 ---
 
-## How to modularize and organize asynchronous code besides callbacks which are not very developmental scalable?
-
----
-
 ### Event Emitters
 
 Event emitter is something that triggers an event to which anyone can listen.
 
-<https://nodejs.org/api/events.html>
 
-In node.js an event can be described simply as a string with a corresponding callback.
+^In node.js an event can be described simply as a string with a corresponding callback.
 
 ---
 
@@ -392,14 +381,11 @@ emitter.removeListener(eventName, listener)
 
 ---
 
-# Streams and Buffers
-
----
-
 # Problems with Large Data
 
 * Speed: Too slow
 * Buffer limit: ~1Gb
+
 
 ---
 
@@ -410,7 +396,6 @@ emitter.removeListener(eventName, listener)
 ---
 
 # No need to wait for the entire resource to load
-
 
 ---
 
@@ -430,7 +415,7 @@ emitter.removeListener(eventName, listener)
 # Streams are Everywhere!
 
 * HTTP requests and responses
-* Standard input/output
+* Standard input/output (stdin&stdout)
 * File reads and writes
 
 ---
@@ -439,15 +424,20 @@ emitter.removeListener(eventName, listener)
 
 Standard input streams contain data going into applications.
 
-This is achieved via a read operation.
+---
 
-Input typically comes from the keyboard used to start the process.
+# This is achieved via a read operation.
+
+---
+
+# Input typically comes from the keyboard used to start the process.
 
 ---
 
 To listen in on data from stdin, use the `data` and `end` events:
 
 ```js
+// stdin.js
 process.stdin.resume()
 process.stdin.setEncoding('utf8')
 
@@ -493,9 +483,13 @@ readable.on('readable', () => {
 
 The standard output streams contain data going out of an application.
 
-This is done via a write operation.
+---
 
-Data written to standard output is visible on the command line.
+# This is done via a write operation.
+
+---
+
+# Data written to standard output is visible on the command line.
 
 ---
 
@@ -564,15 +558,21 @@ Docs: <http://bit.ly/1IeAcZ1>
 
 ---
 
+# Working with Buffer
+
 ```js
-buf = new Buffer(26)
+// buf.js
+var buf = new Buffer(26)
 for (var i = 0 ; i < 26 ; i++) {
   buf[i] = i + 97 // 97 is ASCII a
 }
-buf // <Buffer 61 62 63 64 65 66 67 68 69 6a 6b 6c 6d 6e 6f 70 71 72 73 74 75 76 77 78 79 7a>
+console.log(buf) // <Buffer 61 62 63 64 65 66 67 68 69 6a 6b 6c 6d 6e 6f 70 71 72 73 74 75 76 77 78 79 7a>
+console.log(buf.toString('utf8')) // abcdefghijklmnopqrstuvwxyz
 ```
 
-Buffer Convertion:
+---
+
+# Buffer Convertion
 
 ```js
 buf.toString('ascii') // outputs: abcdefghijklmnopqrstuvwxyz
@@ -647,6 +647,8 @@ $ node server-stream
 
 # DevTools
 
+Stream responds faster:
+
 ```
 X-Response-Time
 ~300ms vs. 3-5s
@@ -668,7 +670,7 @@ $ stream-adventure
 
 ---
 
-# Clusters
+# How to scale a single threaded system?
 
 ---
 
@@ -805,9 +807,12 @@ var p = process.exec('node program.js', function (error, stdout, stderr) {
 
 ---
 
-# Handling Async Errors
+# How to handle async errors?
 
 ---
+
+
+# Handling Async Errors
 
 Event Loop: Async errors are harder to handle/debug, because system loses context of the error. Then, application crashes.
 
@@ -1119,12 +1124,17 @@ We use Node a lot!
 
 ---
 
+# Slides & Code :page_facing_up:
+
+<https://github.com/azat-co/you-dont-know-node>
+
+or
+
+PDF: <http://bit.ly/1VJWpQK>
+
+---
 
 # Q&A ❓🙋➡️😄
-
-Send bugs :bug: to
-
-<https://github.com/azat-co/you-dont-know-node/issues>
 
 Twitter: @azat_co
 Email: hi@azat.co
