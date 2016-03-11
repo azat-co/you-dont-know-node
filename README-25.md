@@ -539,11 +539,6 @@ $ stream-adventure
 
 <https://github.com/substack/stream-handbook>
 
-
----
-
-# How to scale a single threaded system?
-
 ---
 
 # Clusters
