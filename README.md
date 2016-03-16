@@ -4,7 +4,6 @@ slidenumbers: true
 # You Don't Know Node
 ## Quick Intro to 6 Core Features
 
-
 ---
 
 # Better Apps—Better Life
@@ -110,7 +109,6 @@ console.log('Step: 2')
 ^Blocking I/O is expensive!
 
 
-
 ---
 
 
@@ -147,9 +145,6 @@ console.log('Hello Node!')
 //data1->Hello Ruby->data2->Hello NODE!
 ```
 
-
-
-
 ---
 
 # Non-Blocking Node.js Code
@@ -175,18 +170,11 @@ console.log("Hello Node!")
 
 ---
 
-* Where to store passwords?
-* How to create global variables (no `window` in Node)?
-* How to access CLI input, OS, platform, memory usage, versions, etc.?
-
+### How to create global variables (no `window` in Node)?
 
 ---
 
 # Global
-
----
-
-# `global.process`
 
 ---
 
@@ -218,6 +206,16 @@ console.log("Hello Node!")
 
 
 # `global.setTimeout()`
+
+---
+
+
+# `global.process`
+
+---
+
+* How to access CLI input, OS, platform, memory usage, versions, etc.?
+* Where to store passwords?
 
 ---
 
@@ -307,24 +305,37 @@ fs.readdir(source, function (err, files) {
 
 ---
 
-# Event Emitters
+![inline](images/tree_slam.gif)
 
 ---
 
-### Event Emitters
-
-Event emitter is something that triggers an event to which anyone can listen.
-
-
-^In node.js an event can be described simply as a string with a corresponding callback.
+# Events
 
 ---
 
-### Event Emitters
+### Events
 
-* Event handling in Node uses the observer pattern
-* An event, or subject, keeps track of all functions that are associated with it
-* These associated functions, known as observers, are executed when the given event is triggered
+In node.js an event can be described simply as a string with a corresponding callback.
+
+
+```js
+emitter.on('done', function(results) {
+  console.log('Done: ', results)
+})
+```
+
+
+---
+
+### Event handling in Node uses the observer pattern
+
+---
+
+### An event, or subject, keeps track of all functions that are associated with it
+
+---
+
+### These associated functions, known as observers, are executed when the given event is triggered
 
 ---
 
@@ -1134,6 +1145,12 @@ We use Node a lot!
 1. Clusters
 1. C++ Addons
 1. Domain
+
+---
+
+# The End
+
+![inline](images/atwoods_law.png)
 
 ---
 
