@@ -32,6 +32,16 @@ Blog: webapplog.com
 * Books: React Quickly, Practical Node.js, Pro Express.js, Express.js API and 8 others
 * Teach: NodeProgram.com
 
+---
+
+# Slides & Code :page_facing_up:
+
+<https://github.com/azat-co/you-dont-know-node>
+
+or
+
+PDF: <http://bit.ly/1VJWpQK>
+
 
 ---
 
