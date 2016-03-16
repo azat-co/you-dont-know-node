@@ -38,6 +38,10 @@ Blog: webapplog.com
 
 ---
 
+# Starting with basics: Why Use Node?
+
+---
+
 # Most apps wait for input/output which are the most expensive tasks
 
 ---
@@ -94,11 +98,14 @@ console.log('Step: 2')
 
 ---
 
-# Single thread - worry free
+# [Mutli-threading] is the software equivalent of a nuclear device because if it is used incorrectly, it can blow up in your face.
+
+<http://blog.codinghorror.com/threading-concurrency-and-the-most-powerful-psychokinetic-explosive-in-the-univ>
 
 ---
 
-# Mutli-threading is like a nuclear device
+# Single thread - no worries 😄
+
 
 ---
 
@@ -166,6 +173,17 @@ console.log("Hello Node!")
 
 ---
 
+# Most of Node is JavaScript
+
+* Array
+* String
+* Primitives
+* Functions
+* Objects
+
+---
+
+
 # Node != Browser JavaScript
 
 ---
@@ -196,19 +214,6 @@ console.log("Hello Node!")
 # `global.require()`
 
 ---
-
-# `global.console`
-
-
-
-# `global.setInterval()`
-
-
-
-# `global.setTimeout()`
-
----
-
 
 # `global.process`
 
@@ -304,6 +309,8 @@ fs.readdir(source, function (err, files) {
 ## Callbacks are not very developmental scalable 😞
 
 ---
+
+# Me When Working With Deeply Nested Callbacks
 
 ![inline](images/tree_slam.gif)
 
@@ -444,7 +451,9 @@ emitter.removeListener(eventName, listener)
 
 ---
 
-# `process.stdin`
+# Readable Stream Example
+
+`process.stdin`
 
 Standard input streams contain data going into applications.
 
@@ -476,18 +485,13 @@ process.stdin.on('end', function () {
 
 ---
 
-Notes:
+# Demo
 
-* `data` - input fed into the program. Depending on the size of
-the input, this event can trigger multiple times
-
-* an `end` event is necessary to signal the conclusion of the input
-stream
-
-* `stdin` is paused by default, and must be resumed before data can
-be read from it
+`$ node stdin.js`
 
 ---
+
+# New Interface `read()`
 
 ```js
 var readable = getReadableStreamSomehow()
@@ -503,9 +507,11 @@ readable.on('readable', () => {
 
 ---
 
-# `process.stdout`
+# Writable Stream Example
 
-The standard output streams contain data going out of an application.
+`process.stdout`
+
+Standard output streams contain data going out of the applications.
 
 ---
 
@@ -620,40 +626,18 @@ fs.readFile('/etc/passwd', function (err, data) {
 
 ---
 
-### Buffer Methods and Properties
-
-* `buf.length`
-* `buf.write(string[, offset][, length][, encoding])`
-* `buf.toString([encoding][, start][, end])`
-* `buf.toJSON()`
-
----
-
-### Buffer Methods and Properties
-
-* `buf.equals(otherBuffer)`
-* `buf.compare(otherBuffer)`
-* `buf.copy(targetBuffer[, targetStart][, sourceStart][, sourceEnd])`
-* `buf.slice([start][, end])`
-* `buf.fill(value[, offset][, end])`
-
----
-
-### Encodings
+# Demo
 
 ```
-ascii utf8 utf16le
-ucs2 base64 binary
-char hex
+$ node server-stream
 ```
 
 ---
 
 # Streams and Buffer Demo
 
-server-stream.js:
-
 ```js
+// server-stream.js
 app.get('/stream', function(req, res) {
   var stream = fs.createReadStream(largeImagePath)
   stream.pipe(res)
@@ -669,9 +653,9 @@ $ node server-stream
 
 ---
 
-# DevTools
+# Results in DevTools
 
-Stream responds faster:
+`/stream` responds faster!
 
 ```
 X-Response-Time
@@ -698,6 +682,15 @@ $ stream-adventure
 
 ---
 
+# Cluster Usage
+
+* Master: starts workers
+* Worker: do the job, e.g., HTTP server
+
+Number of processes = number of CPUs
+
+---
+
 # Clusters
 
 ```js
@@ -715,7 +708,7 @@ if (cluster.isMaster) {
 
 # Cluster Demo
 
-1. Run `code/cluster.js` with node (`node cluster.js`).
+1. Run `code/cluster.js` with node (`$ node cluster.js`).
 1. Install `loadtest` with npm: `$ npm install -g loadtest`
 1. Run load testing with: `$ loadtest  http://localhost:3000 -t 20 —c 10`
 
@@ -872,11 +865,19 @@ try {
 }
 ```
 
+The app crashes!
+
+---
+
+# Me When Async Error's Thrown
+
+![inline](images/baby_elephant.gif)
+
 ---
 
 ### Async Errors
 
-The app crashes! How to deal with it?
+ How to deal with it?
 
 :sweat_smile:
 
