@@ -10,14 +10,14 @@ var largeImagePath = path.join(__dirname,'CapitalOne_Digital_Skills_Infographic_
 app.use(responseTime())
 
 app.get('/non-stream', function(req, res) {
-  var file = fs.readFileSync(largeImagePath)
-  res.end(file)
-})
-
-app.get('/non-stream2', function(req, res) {
   var file = fs.readFile(largeImagePath, function(error, data){
     res.end(data)
   })
+})
+
+app.get('/non-stream2', function(req, res) {
+  var file = fs.readFileSync(largeImagePath)
+  res.end(file)
 })
 
 app.get('/stream', function(req, res) {
