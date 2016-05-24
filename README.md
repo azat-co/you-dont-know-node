@@ -422,7 +422,7 @@ emitter.removeListener(eventName, listener)
 
 # Streams
 
-## Abstactions for continuos chunking of data
+## Abstractions for continuos chunking of data
 
 ---
 
@@ -579,10 +579,10 @@ r.pipe(z).pipe(w)
 
 Binary data type, to create:
 
-* `new Buffer(size)`
-* `new Buffer(array)`
-* `new Buffer(buffer)`
-* `new Buffer(str[, encoding])`
+* `Buffer.alloc(size)`
+* `Buffer.from(array)`
+* `Buffer.from(buffer)`
+* `Buffer.from(str[, encoding])`
 
 Docs: <http://bit.ly/1IeAcZ1>
 
@@ -592,7 +592,7 @@ Docs: <http://bit.ly/1IeAcZ1>
 
 ```js
 // buf.js
-var buf = new Buffer(26)
+var buf = Buffer.alloc(26)
 for (var i = 0 ; i < 26 ; i++) {
   buf[i] = i + 97 // 97 is ASCII a
 }
