@@ -422,7 +422,7 @@ emitter.removeListener(eventName, listener)
 
 # Streams
 
-## Abstractions for continuos chunking of data
+## Abstractions for continuous chunking of data
 
 ---
 
