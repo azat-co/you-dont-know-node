@@ -503,7 +503,7 @@ readable.on('readable', () => {
 })
 ```
 
-^readabl.read is sync but the chunks are small
+^readable.read is sync but the chunks are small
 
 ---
 
