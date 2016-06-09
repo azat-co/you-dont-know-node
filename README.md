@@ -56,6 +56,12 @@ Blog: webapplog.com
 
 ---
 
+# Capital One in Top 10 US Banks
+
+![inline](images/commercial.gif)
+
+---
+
 # Starting with basics: Why Use Node?
 
 ---
