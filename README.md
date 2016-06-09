@@ -42,7 +42,21 @@ Blog: webapplog.com
 
 ---
 
-# Most apps wait for input/output which are the most expensive tasks
+# Input/output is one of the most expensive type tasks (>CPU) 💰
+
+---
+
+# Node has non-blocking I/O
+
+
+---
+
+![inline](images/non-blocking.png)
+
+^This allows processing other tasks while IO calls are unfinished like this
+^Nginx vs. Apache
+^Blocking I/O is expensive!
+
 
 ---
 
@@ -55,9 +69,7 @@ Thread.sleep(1000);
 System.out.println("Step: 3");
 ```
 
----
 
-![inline](images/threading_java.png)
 
 ---
 
@@ -87,7 +99,15 @@ console.log('Step: 2')
 
 ---
 
-# Event Loop
+# Blocking Web Server
+
+---
+
+![inline](images/threading_java.png)
+
+---
+
+# Non-Blocking Web Server
 
 ---
 
@@ -104,16 +124,11 @@ console.log('Step: 2')
 
 ---
 
-# Single thread - no worries 😄
-
+# Blocking systems have to be mutli-threaded
 
 ---
 
-![inline](images/non-blocking.png)
-
-^This allows processing other tasks while IO calls are unfinished like this
-^Nginx vs. Apache
-^Blocking I/O is expensive!
+# Node is single threaded... and that's good! 😄
 
 
 ---
@@ -170,6 +185,23 @@ var contents = fs.readFile('ips.txt','utf8', function(err,contents){
 console.log("Hello Node!")
 //Hello Python->Hello Node->data1->data2
 ```
+
+---
+
+
+# How many of you reach the performance limitations of apps built with blocking I/O systems?
+
+---
+
+# Probably not many
+
+---
+
+# My Fav Node Benefit
+
+---
+
+# JavaScript everywhere. One language to rule 'em all!
 
 ---
 
