@@ -56,10 +56,6 @@ Blog: webapplog.com
 
 ---
 
-
-
----
-
 # Starting with basics: Why Use Node?
 
 ---
@@ -1169,9 +1165,13 @@ $ node hello.js
 
 ---
 
-# Capital One
+# Want to work with Node but your boss won't let you?
 
-We use Node and other cutting-edge open source tech (React, Kotlin, Clojure, Angular 2, TypeScript, Go) a lot!
+Capital One is hiring ~2,000 more software engineers in UK, Canada and US.
+
+<https://jobs.capitalone.com>
+
+We use Node and other cutting-edge open source tech a lot! (React, Kotlin, Clojure, Angular 2, TypeScript, Go, etc.)
 
 ---
 
@@ -1183,13 +1183,6 @@ Node at Capital One by Azat Mardan at Node Interactive 2015
 
 ![inline](images/node-capital-one.png)
 
----
-
-# Want to Work on Node?
-
-We are hiring in UK, Canada and US.
-
-https://jobs.capitalone.com
 
 ---
 
@@ -1235,6 +1228,6 @@ Check out [NodeProgram.com](http://NodeProgram.com) for the best online and in-p
 
 ---
 
-# The End
+# CodingHorror.com
 
 ![inline](images/atwoods_law.png)
