@@ -273,7 +273,7 @@ console.log('Hello Node!')
 
 * Access CLI input?
 * Get system info: OS, platform, memory usage, versions, etc.?
-* React env vars (passwords!)?
+* Read env vars (passwords!)?
 
 ---
 
@@ -358,7 +358,20 @@ fs.readdir(source, function (err, files) {
 
 # Events
 
-Events are part of core and supported by most of the core modules while more advanced patterns such as promises, generators, async/await is not.
+Events are part of core and supported by most of the core modules while more advanced patterns such as promises, generators, async/await are not.
+
+
+---
+
+### Events == Node Observer Pattern
+
+* Subject
+* Observers (event listeners) on a subject
+* Event triggers
+
+---
+
+### Events
 
 ```js
 var events = require('events')
@@ -378,14 +391,6 @@ emitter.on('done', function(results) {
 })
 ```
 
-
----
-
-### Events == Node Observer Pattern
-
-* Subject
-* Observers (event listeners) on a subject
-* Event triggers
 
 ---
 
@@ -583,14 +588,12 @@ process.stdout.write('A simple message\n')
 ```js
 const http = require('http')
 var server = http.createServer( (req, res) => {
-  var body = ''
   req.setEncoding('utf8')
   req.on('data', (chunk) => {
-    body += chunk
+    transform(chunk) // This functions is defined somewhere else
   })
   req.on('end', () => {  
     var data = JSON.parse(body)
-    res.write(typeof data)
     res.end()
   })
 })
@@ -1226,7 +1229,7 @@ Email: hi@azat.co
 
 # Want to learn more about Node.js?
 
-Check out [NodeProgram.com](http://NodeProgram.com) for the best online and in-person education!
+Check out [Webapplog.com](http://webapplog.com) and [NodeProgram.com](http://NodeProgram.com) for the best online and in-person education!
 
 
 ---
