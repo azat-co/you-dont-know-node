@@ -6,17 +6,17 @@ slidenumbers: true
 
 ---
 
-# This is ~~Sparta!~~ hands-on presentation
+# This is ~~Sparta!~~ hands-on presentation 💻
 
 ---
 
 # Slides & Code :page_facing_up:
 
-<https://github.com/azat-co/you-dont-know-node>
+Everything: <https://github.com/azat-co/you-dont-know-node>
 
 or
 
-PDF: <http://bit.ly/1VJWpQK>
+just PDF: <http://bit.ly/1VJWpQK>
 
 ---
 
@@ -1201,11 +1201,12 @@ Node at Capital One by Azat Mardan at Node Interactive 2015
 
 # Slides & Code :page_facing_up:
 
-<https://github.com/azat-co/you-dont-know-node>
+Everything: <https://github.com/azat-co/you-dont-know-node>
 
 or
 
-PDF: <http://bit.ly/1VJWpQK>
+just PDF: <http://bit.ly/1VJWpQK>
+
 
 ---
 
