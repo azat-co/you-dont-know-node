@@ -6,6 +6,20 @@ slidenumbers: true
 
 ---
 
+# This is ~~Sparta!~~ hands-on presentation
+
+---
+
+# Slides & Code :page_facing_up:
+
+<https://github.com/azat-co/you-dont-know-node>
+
+or
+
+PDF: <http://bit.ly/1VJWpQK>
+
+---
+
 # Better Apps—Better Life
 
 ^Big idea: Node has some cool core features. Node is everywhere. What if the world can be a better place if more developers master Node?
@@ -13,6 +27,14 @@ slidenumbers: true
 ---
 
 # About Presenter
+
+---
+
+![inline](images/azats-books-covers.png)
+
+^Wrote and published 12 books not counting Korean, Chinese, Polish and Russian translations
+
+---
 
 Azat Mardan
 
@@ -26,15 +48,15 @@ Blog: webapplog.com
 
 # About Presenter
 
-* Work: Technology Fellow at Capital One
+* Work: Technology Fellow at Capital One (kind of a big deal)
 * Experience: FDIC, NIH, DocuSign, HackReactor and Storify
 * Books: React Quickly, Practical Node.js, Pro Express.js, Express.js API and 8 others
-* Teach: NodeProgram.com
+* Teach: [NodeProgram.com](http://NodeProgram.com)
 
 
 ---
 
-![inline](images/azats-books-covers.png)
+
 
 ---
 
@@ -164,7 +186,7 @@ console.log('Hello Ruby\n')
 var contents = fs.readFileSync('ips.txt','utf8')
 console.log(contents)
 console.log('Hello Node!')
-//data1->Hello Ruby->data2->Hello NODE!
+//accounts.txt->Hello Ruby->ips.txt->Hello Node!
 ```
 
 ---
@@ -174,16 +196,16 @@ console.log('Hello Node!')
 ```js
 var fs = require('fs')
 
-var contents = fs.readFile('accounts.txt','utf8', function(err,contents){
+fs.readFile('accounts.txt','utf8', function(err,contents){
    console.log(contents)
 })
-console.log('Hello Python\n')
+console.log('Hello Ruby\n')
 
-var contents = fs.readFile('ips.txt','utf8', function(err,contents){
+fs.readFile('ips.txt','utf8', function(err,contents){
    console.log(contents)
 })
-console.log("Hello Node!")
-//Hello Python->Hello Node->data1->data2
+console.log('Hello Node!')
+//Hello Ruby->Hello Node->... accounts.txt->ips.txt or ips.txt->accounts.txt
 ```
 
 ---
@@ -220,18 +242,20 @@ console.log("Hello Node!")
 
 ---
 
-### How to create global variables (no `window` in Node)?
+# How to create global variables (no `window` in Node), work with modules, get path to my script?
 
 ---
 
-# Global
+# `global` or `GLOBAL`
 
 ---
+
+# It has properties!
+
+---
+
 
 # `global.__filename`
-
----
-
 # `global.__dirname`
 
 
@@ -239,35 +263,24 @@ console.log("Hello Node!")
 
 
 # `global.module`
-
----
-
-
 # `global.require()`
 
 ---
 
-# `global.process`
+# How do I...?
+
+* Access CLI input?
+* Get system info: OS, platform, memory usage, versions, etc.?
+* React env vars (passwords!)?
 
 ---
 
-* How to access CLI input, OS, platform, memory usage, versions, etc.?
-* Where to store passwords?
-
----
-
-# Process
+# `global.process` or `process`
 
 ---
 
 # `process.pid`
-
----
-
 # `process.versions`
-
----
-
 # `process.arch`
 
 ---
@@ -282,10 +295,6 @@ console.log("Hello Node!")
 
 
 # `process.uptime()`
-
----
-
-
 # `process.memoryUsage()`
 
 ---
@@ -295,10 +304,7 @@ console.log("Hello Node!")
 ---
 
 # `process.exit()`
-
----
-
-# `process.on()`
+# `process.kill()`
 
 ---
 
@@ -350,6 +356,13 @@ fs.readdir(source, function (err, files) {
 
 # Events
 
+Events are part of core and supported by most of the core modules while more advanced patterns such as promises, generators, async/await is not.
+
+```js
+var events = require('events')
+var emitter = new events.EventEmitter()
+```
+
 ---
 
 ### Events
@@ -366,22 +379,18 @@ emitter.on('done', function(results) {
 
 ---
 
-### Event handling in Node uses the observer pattern
+### Events == Node Observer Pattern
 
----
-
-### An event, or subject, keeps track of all functions that are associated with it
-
----
-
-### These associated functions, known as observers, are executed when the given event is triggered
+* Subject
+* Observers (event listeners) on a subject
+* Event triggers
 
 ---
 
 ### Using Event Emitters
 
 ```js
-var events  = require('events')
+var events = require('events')
 var emitter = new events.EventEmitter()
 
 emitter.on('knock', function() {
@@ -446,9 +455,9 @@ emitter.removeListener(eventName, listener)
 
 # Problems with Large Data
 
-* Speed: Too slow
+* Speed: Too slow because has to load all
 * Buffer limit: ~1Gb
-
+* Overhyped (JK)
 
 ---
 
@@ -535,7 +544,7 @@ readable.on('readable', () => {
 })
 ```
 
-^readabl.read is sync but the chunks are small
+^readable.read is sync but the chunks are small
 
 ---
 
@@ -1162,13 +1171,28 @@ $ node hello.js
 
 # Capital One
 
-We use Node a lot!
+We use Node and other cutting-edge open source tech (React, Kotlin, Clojure, Angular 2, TypeScript, Go) a lot!
+
+---
+
+# Learn More
+
+Node at Capital One by Azat Mardan at Node Interactive 2015
 
 <https://www.youtube.com/watch?v=BJPeLJhv1Ic>
 
 ![inline](images/node-capital-one.png)
 
 ---
+
+# Want to Work on Node?
+
+We are hiring in UK, Canada and US.
+
+https://jobs.capitalone.com
+
+---
+
 
 # 30-Second Summary
 
@@ -1181,11 +1205,6 @@ We use Node a lot!
 
 ---
 
-# The End
-
-![inline](images/atwoods_law.png)
-
----
 
 # Slides & Code :page_facing_up:
 
@@ -1197,7 +1216,25 @@ PDF: <http://bit.ly/1VJWpQK>
 
 ---
 
-# Q&A ❓🙋➡️😄
+
+# My Contacts
 
 Twitter: @azat_co
 Email: hi@azat.co
+
+---
+
+# Want to learn more about Node.js?
+
+Check out [NodeProgram.com](http://NodeProgram.com) for the best online and in-person education!
+
+
+---
+
+# One Last Thing
+
+---
+
+# The End
+
+![inline](images/atwoods_law.png)
