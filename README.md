@@ -1,8 +1,8 @@
-footer: © Capital One, 2016
+footer: © NodeProgram.com, 2016
 slidenumbers: true
 
 # You Don't Know Node
-## Quick Intro to 6 Core Features
+## Quick Intro to 5 Core Features
 
 ---
 
