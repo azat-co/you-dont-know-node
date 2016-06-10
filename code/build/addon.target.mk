@@ -15,7 +15,7 @@ DEFS_Debug := \
 CFLAGS_Debug := \
 	-O0 \
 	-gdwarf-2 \
-	-mmacosx-version-min=10.5 \
+	-mmacosx-version-min=10.7 \
 	-arch x86_64 \
 	-Wall \
 	-Wendif-labels \
@@ -41,10 +41,10 @@ CFLAGS_OBJC_Debug :=
 CFLAGS_OBJCC_Debug :=
 
 INCS_Debug := \
-	-I/Users/azat/.node-gyp/5.1.0/include/node \
-	-I/Users/azat/.node-gyp/5.1.0/src \
-	-I/Users/azat/.node-gyp/5.1.0/deps/uv/include \
-	-I/Users/azat/.node-gyp/5.1.0/deps/v8/include
+	-I/Users/azat/.node-gyp/6.2.0/include/node \
+	-I/Users/azat/.node-gyp/6.2.0/src \
+	-I/Users/azat/.node-gyp/6.2.0/deps/uv/include \
+	-I/Users/azat/.node-gyp/6.2.0/deps/v8/include
 
 DEFS_Release := \
 	'-DNODE_GYP_MODULE_NAME=addon' \
@@ -57,7 +57,7 @@ DEFS_Release := \
 CFLAGS_Release := \
 	-Os \
 	-gdwarf-2 \
-	-mmacosx-version-min=10.5 \
+	-mmacosx-version-min=10.7 \
 	-arch x86_64 \
 	-Wall \
 	-Wendif-labels \
@@ -83,10 +83,10 @@ CFLAGS_OBJC_Release :=
 CFLAGS_OBJCC_Release :=
 
 INCS_Release := \
-	-I/Users/azat/.node-gyp/5.1.0/include/node \
-	-I/Users/azat/.node-gyp/5.1.0/src \
-	-I/Users/azat/.node-gyp/5.1.0/deps/uv/include \
-	-I/Users/azat/.node-gyp/5.1.0/deps/v8/include
+	-I/Users/azat/.node-gyp/6.2.0/include/node \
+	-I/Users/azat/.node-gyp/6.2.0/src \
+	-I/Users/azat/.node-gyp/6.2.0/deps/uv/include \
+	-I/Users/azat/.node-gyp/6.2.0/deps/v8/include
 
 OBJS := \
 	$(obj).target/$(TARGET)/hello.o
@@ -119,24 +119,28 @@ $(obj).$(TOOLSET)/$(TARGET)/%.o: $(obj)/%.cc FORCE_DO_CMD
 ### Rules for final target.
 LDFLAGS_Debug := \
 	-undefined dynamic_lookup \
+	-Wl,-no_pie \
 	-Wl,-search_paths_first \
-	-mmacosx-version-min=10.5 \
+	-mmacosx-version-min=10.7 \
 	-arch x86_64 \
 	-L$(builddir)
 
 LIBTOOLFLAGS_Debug := \
 	-undefined dynamic_lookup \
+	-Wl,-no_pie \
 	-Wl,-search_paths_first
 
 LDFLAGS_Release := \
 	-undefined dynamic_lookup \
+	-Wl,-no_pie \
 	-Wl,-search_paths_first \
-	-mmacosx-version-min=10.5 \
+	-mmacosx-version-min=10.7 \
 	-arch x86_64 \
 	-L$(builddir)
 
 LIBTOOLFLAGS_Release := \
 	-undefined dynamic_lookup \
+	-Wl,-no_pie \
 	-Wl,-search_paths_first
 
 LIBS :=

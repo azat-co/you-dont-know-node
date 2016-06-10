@@ -149,13 +149,13 @@ console.log('Step: 2')
 
 ---
 
-# [Mutli-threading] is the software equivalent of a nuclear device because if it is used incorrectly, it can blow up in your face.
+# [Multi-threading] is the software equivalent of a nuclear device because if it is used incorrectly, it can blow up in your face.
 
 <http://blog.codinghorror.com/threading-concurrency-and-the-most-powerful-psychokinetic-explosive-in-the-univ>
 
 ---
 
-# Blocking systems have to be mutli-threaded
+# Blocking systems have to be multi-threaded
 
 ---
 
