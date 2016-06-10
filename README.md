@@ -131,6 +131,10 @@ console.log('Step: 2')
 
 ---
 
+![inline](images/coffeeshop-blocking.jpg)
+
+---
+
 # Non-Blocking Web Server
 
 ---
@@ -139,6 +143,9 @@ console.log('Step: 2')
 
 ^This is in contrast to today's more common concurrency model where OS threads are employed. Thread-based networking is relatively inefficient and very difficult to use. Furthermore, users of Node are free from worries of dead-locking the process --- there are no locks
 
+---
+
+![inline](images/coffeeshop-non-blocking.jpg)
 
 ---
 
@@ -198,12 +205,12 @@ console.log('Hello Node!')
 ```js
 var fs = require('fs')
 
-fs.readFile('accounts.txt','utf8', function(err,contents){
+fs.readFile('accounts.txt','utf8', function(error, contents){
    console.log(contents)
 })
 console.log('Hello Ruby\n')
 
-fs.readFile('ips.txt','utf8', function(err,contents){
+fs.readFile('ips.txt','utf8', function(error, contents){
    console.log(contents)
 })
 console.log('Hello Node!')
@@ -212,6 +219,9 @@ console.log('Hello Node!')
 
 ---
 
+# Node *typically* is much faster than other platforms
+
+---
 
 # How many of you reach the performance limitations of apps built with blocking I/O systems?
 
@@ -229,6 +239,12 @@ console.log('Hello Node!')
 
 ---
 
+* Think faster
+* Reuse code
+* Learn quicker
+
+---
+
 # Most of Node is JavaScript
 
 * Array
@@ -240,7 +256,7 @@ console.log('Hello Node!')
 ---
 
 
-# Node != Browser JavaScript
+# Node !== Browser JavaScript
 
 ---
 
@@ -457,6 +473,16 @@ emitter.on(eventName, listener)
 emitter.once(eventName, listener)
 emitter.removeListener(eventName, listener)
 ```
+
+---
+
+# Other Node Patterns
+
+Node Patterns: From Callbacks to Observer: <http://webapplog.com/node-patterns-from-callbacks-to-observer/>
+
+or
+
+<https://github.com/azat-co/node-patterns>
 
 ---
 
@@ -712,7 +738,7 @@ X-Response-Time
 
 # Stream Resources
 
-<https://github.com/substack/stream-adventure>
+Stream automated workshop: <https://github.com/substack/stream-adventure>
 
 ```
 $ sudo npm install -g stream-adventure
@@ -723,6 +749,9 @@ $ stream-adventure
 
 
 ---
+
+
+
 
 # How to scale a single threaded system?
 
