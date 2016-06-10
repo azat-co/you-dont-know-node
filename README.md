@@ -1,4 +1,4 @@
-footer: © NodeProgram.com, 2016
+footer: © Capital One, 2016
 slidenumbers: true
 
 # You Don't Know Node
