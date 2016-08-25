@@ -1,4 +1,4 @@
-footer: © Capital One, 2016
+footer: © Node.University, 2016
 slidenumbers: true
 
 # You Don't Know Node
@@ -6,11 +6,11 @@ slidenumbers: true
 
 ---
 
-# This is ~~Sparta!~~ hands-on presentation 💻
+# Code along and take notes
 
 ---
 
-# Slides & Code :page_facing_up:
+# Slides & Code :page_facing_up: 💻
 
 Everything: <https://github.com/azat-co/you-dont-know-node>
 
@@ -1258,12 +1258,20 @@ Email: hi@azat.co
 
 # Want to learn more about Node.js?
 
-Check out [Webapplog.com](http://webapplog.com) and [NodeProgram.com](http://NodeProgram.com) for the best online and in-person education!
+Check out [Node.University](http://node.university), [Webapplog.com](http://webapplog.com) and [NodeProgram.com](http://NodeProgram.com) for the best online and in-person education!
 
 
 ---
 
-# One Last Thing
+
+
+![inline](images/nu.png)
+
+<http://node.university>
+
+---
+
+# One Last Thing 👉
 
 ---
 
