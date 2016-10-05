@@ -52,6 +52,7 @@ Blog: webapplog.com
 * Experience: FDIC, NIH, DocuSign, HackReactor and Storify
 * Books: React Quickly, Practical Node.js, Pro Express.js, Express.js API and 8 others
 * Teach: [NodeProgram.com](http://NodeProgram.com)
+* Master of Science from University of Northern Virginia
 
 
 ---
