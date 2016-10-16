@@ -1,6 +1,11 @@
 footer: © Node.University, 2016
 slidenumbers: true
 
+
+![](images/you-dk-node-course-cover-v1.png)
+
+---
+
 # You Don't Know Node
 ## Quick Intro to 5 Core Features
 
