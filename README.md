@@ -13,33 +13,35 @@ slidenumbers: true
 ---
 
 # DO NOT TAKE NOTES
-## Turn the F*ck Your Laptops and Listen
+## Turn OFF Laptops and Listen
 
 ---
 
-# Who am I?
-
- ¯\_(ツ)_/¯
+# Who am I? `¯\_(ツ)_/¯`
 
 ---
 
-# I'm not Kyle Simpson
 
-# And this is not "You Don't Know JS"
+# Not Kyle Simpson
+(Hint: He wrote "You Don't Know JS" series)
+
+![inline](images/kylesimpson.jpg)
+
+^You are looking for Kyle Simpson, you're in a wrong room
 
 ---
 
-Well, I founded Node University and...
+# My name is Azat Mardan and I the creator of Node University
 
 ---
 
 Azat Mardan and numbers
 
-* 📚  14+ books (not counting Korean, Chinese, Polish and Russian translations)
+* 📚  14 books (not counting Korean, Chinese, Polish and Russian translations)
 * 🎤  20+ conferences talks in 2016-17
-* 👨‍💻  200+ blog posts on Webapplog: https://webapplog.com
-* ⌨ 239 top GitHub contributor in some year according to some list ([source](https://github.com/azat-co/practicalnode))
-* 🎓  20 online coures on Node University
+* 👨‍💻  200+ blog posts on Webapplog: <https://webapplog.com>
+* ⌨ 239 top most active GitHub contributor, higher Paul Irish, Todd Motto, TJ Holowaychuk, John Papa, etc. ([source](https://github.com/azat-co/practicalnode))
+* 🎓  19 online courses on Node University <https://node.university>
 
 ---
 
@@ -1235,6 +1237,11 @@ Moaaarr Node
 
 # Sign up for Node University NOW!
 
+![inline](images/watermark-inverted-no-bk.png)
+
 [Node.University](https://node.university) is the ultimate resource for the best online Node education!
 
-<https://node.university>
+
+<https://node.university> 🚀
+
+
