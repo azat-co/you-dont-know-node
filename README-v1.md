@@ -1,5 +1,4 @@
 footer: © Node.University, 2016
-theme: Simple
 slidenumbers: true
 
 
@@ -7,86 +6,65 @@ slidenumbers: true
 
 ---
 
-# You Don't Know Node, v2
-## Quick Intro to Core Node
+# You Don't Know Node
+## Quick Intro to 5 Core Features
 
 ---
 
-# DO NOT TAKE NOTES
-## Turn the F*ck Your Laptops and Listen
+# Code along and take notes
 
 ---
 
-# Who am I?
+# Slides & Code :page_facing_up: 💻
 
- ¯\_(ツ)_/¯
+Everything: <https://github.com/azat-co/you-dont-know-node>
 
----
+or
 
-# I'm not Kyle Simpson
-
-# And this is not "You Don't Know JS"
+just PDF: <http://bit.ly/1VJWpQK>
 
 ---
 
-Well, I founded Node University and...
+# Better Apps—Better Life
+
+^Big idea: Node has some cool core features. Node is everywhere. What if the world can be a better place if more developers master Node?
 
 ---
 
-Azat Mardan and numbers
-
-* 📚  14+ books (not counting Korean, Chinese, Polish and Russian translations)
-* 🎤  20+ conferences talks in 2016-17
-* 👨‍💻  200+ blog posts on Webapplog: https://webapplog.com
-* ⌨ 239 top GitHub contributor in some year according to some list ([source](https://github.com/azat-co/practicalnode))
-* 🎓  20 online coures on Node University
-
----
-
-
-![inline](images/companies.png)
-
-^Macy's, Intuit, Northwestern Mutual, Apple, DocuSign, UC Davis, Salesforce, The University of Arizona, The Orchard, M3, Twilio, Fox Studios, Michael Kors 
+# About Presenter
 
 ---
 
 ![inline](images/azats-books-covers.png)
 
----
-
-## Fun Facts
-
-* Read ~270 books in last 4 years
-* Check social media only once per week
-* Prefer coffee with butter instead of milk
-* Live in San Francisco Bay Area
+^Wrote and published 12 books not counting Korean, Chinese, Polish and Russian translations
 
 ---
 
-# My Mission is to Make a World a Better Place
+Azat Mardan
+
+![inline](images/azat.jpeg)
+
+Twitter: @azat_co
+Email: hi@azat.co
+Blog: webapplog.com
 
 ---
 
-# My Plan
+# About Presenter
 
-Software helps people 
+* Work: Technology Fellow at Capital One (kind of a big deal)
+* Experience: FDIC, NIH, DocuSign, HackReactor and Storify
+* Books: React Quickly, Practical Node.js, Pro Express.js, Express.js API and 8 others
+* Teach: [NodeProgram.com](http://NodeProgram.com)
+* Master of Science from University of Northern Virginia
 
-`+` 
-
-Node is a good tool to build good software
-
-`=`
-
-I need to teach as many people Node as possible
 
 ---
 
-# My Goal 
+# Capital One in Top 10 US Banks
 
-To make most of you in this room to sign up for Node University 
-
-https://node.university 
-
+![inline](images/commercial.gif)
 
 ---
 
@@ -775,11 +753,11 @@ $ stream-adventure
 
 <https://github.com/substack/stream-handbook>
 
----
-
-![inline](images/nodeconfcamp.JPG)
 
 ---
+
+
+
 
 # How to scale a single threaded system?
 
@@ -1082,6 +1060,44 @@ process.addListener('uncaughtException', function (err) {
 
 ---
 
+### Domain
+
+This module is softly deprecated in 4.0 (most likey will be separate from core module), but there's no alternatives in core as of now.
+
+---
+
+### Domain Example
+
+```js
+var domain = require('domain').create()
+domain.on('error', function(error){
+  console.log(error)
+})
+domain.run(function(){
+  throw new Error('Failed!')
+})
+```
+
+---
+
+### Domain with Async Error Demo
+
+domain-async.js:
+
+```js
+var d = require('domain').create()
+d.on('error', function(e) {
+   console.log('Custom Error: ' + e)
+})
+d.run(function() {
+  setTimeout(function () {
+    throw new Error('Failed!')
+  }, Math.round(Math.random()*100))
+});
+```
+
+---
+
 # C++ Addons
 
 ---
@@ -1194,6 +1210,28 @@ $ node hello.js
 
 ---
 
+# Want to work with Node but your boss won't let you?
+
+Capital One is hiring ~2,000 more software engineers in UK, Canada and US.
+
+<https://jobs.capitalone.com>
+
+We use Node and other cutting-edge open source tech a lot! (React, Kotlin, Clojure, Angular 2, TypeScript, Go, etc.)
+
+---
+
+# Learn More
+
+Node at Capital One by Azat Mardan at Node Interactive 2015
+
+<https://www.youtube.com/watch?v=BJPeLJhv1Ic>
+
+![inline](images/node-capital-one.png)
+
+
+---
+
+
 # 30-Second Summary
 
 1. Event Emitters
@@ -1205,26 +1243,38 @@ $ node hello.js
 
 ---
 
-Moaaarr Node
 
-* NAPI
-* Crypto
-* HTTP/2
+# Slides & Code :page_facing_up:
 
----
+Everything: <https://github.com/azat-co/you-dont-know-node>
 
-# You Don't Know Node Online Course
+or
 
-![inline](images/you-dk-node-course-cover-v1.png)
-
-<https://node.university/p/you-dont-know-node>
+just PDF: <http://bit.ly/1VJWpQK>
 
 
 ---
 
-# CodingHorror.com
 
-![inline](images/atwoods_law.png)
+# My Contacts
+
+Twitter: @azat_co
+Email: hi@azat.co
+
+---
+
+# Want to learn more about Node.js?
+
+Check out [Node.University](http://node.university), [Webapplog.com](http://webapplog.com) and [NodeProgram.com](http://NodeProgram.com) for the best online and in-person education!
+
+
+---
+
+
+
+![inline](images/nu.png)
+
+<http://node.university>
 
 ---
 
@@ -1232,9 +1282,6 @@ Moaaarr Node
 
 ---
 
+# CodingHorror.com
 
-# Sign up for Node University NOW!
-
-[Node.University](https://node.university) is the ultimate resource for the best online Node education!
-
-<https://node.university>
+![inline](images/atwoods_law.png)
