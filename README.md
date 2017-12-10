@@ -1,7 +1,9 @@
-footer: © Node.University, 2016
+footer: © Node.University, 2018
 theme: Simple
 slidenumbers: true
-
+build-lists: true
+[.hide-footer]
+[.slidenumbers: false]
 
 ![](images/you-dk-node-course-cover-v1.png)
 
@@ -12,8 +14,7 @@ slidenumbers: true
 
 ---
 
-# DO NOT TAKE NOTES
-## Turn OFF Laptops and Listen
+# Turn OFF laptops, phones, distractors and LISTEN
 
 ---
 
@@ -65,6 +66,24 @@ Azat Mardan and numbers
 
 ---
 
+# I know Node
+
+* Storify - startup which we sold
+* DocuSign - 50M users
+* Capital One - Fortune 500 
+
+---
+
+# I dislike compiled languages
+
+## Actually, just one. Java!
+
+---
+
+![inline](images/java-compile-funny.jpg)
+
+
+---
 # My Mission is to Make a World a Better Place
 
 ---
@@ -83,12 +102,9 @@ I need to teach as many people Node as possible
 
 ---
 
-# My Goal 
+# My Goal (for this talk)
 
-To make most of you in this room to sign up for Node University 
-
-https://node.university 
-
+Spike your interest in core Node features
 
 ---
 
@@ -102,6 +118,18 @@ https://node.university
 
 # Node has non-blocking I/O
 
+
+---
+
+![inline](images/non-blocking-docs.png)
+
+^Docs are not very ilustrative
+
+---
+
+![inline](images/event-loop-node-interactive.jpg)
+
+^Good but too much tech details
 
 ---
 
@@ -269,6 +297,8 @@ console.log('Hello Node!')
 
 ---
 
+# When one language is used everywhere
+
 * Think faster
 * Reuse code
 * Learn quicker
@@ -290,11 +320,19 @@ console.log('Hello Node!')
 
 ---
 
+# Node Core Modules
+
+![inline](images/node-core-modules.gif)
+
+---
+
 # How to create global variables (no `window` in Node), work with modules, get path to my script?
 
 ---
 
-# `global` or `GLOBAL`
+# `global`
+
+Now available everywhere in your code
 
 ---
 
@@ -506,13 +544,11 @@ emitter.removeListener(eventName, listener)
 
 ---
 
-# Other Node Patterns
+# Resources to Learn Node Patterns
 
-Node Patterns: From Callbacks to Observer: <http://webapplog.com/node-patterns-from-callbacks-to-observer/>
-
-or
-
-<https://github.com/azat-co/node-patterns>
+* Node Patterns: From Callbacks to Observer: <http://webapplog.com/node-patterns-from-callbacks-to-observer>
+* <https://github.com/azat-co/node-patterns>
+* [Node.js Design Patterns, Second Edition by Mario Casciaro, Luciano Mammino](https://www.packtpub.com/web-development/nodejs-design-patterns-second-edition)
 
 ---
 
@@ -930,6 +966,18 @@ var p = process.exec('node program.js', function (error, stdout, stderr) {
 
 ---
 
+# There are few more methods
+
+* child_process.execFile()
+* child_process.execSync()
+* child_process.execFileSync()
+
+^child_process.execFile(): similar to child_process.exec() except that it spawns the command directly without first spawning a shell.
+child_process.execSync(): a synchronous version of child_process.exec() that will block the Node.js event loop.
+child_process.execFileSync(): a synchronous version of child_process.execFile() that will block the Node.js event loop.
+
+---
+
 # How to handle async errors?
 
 ---
@@ -1084,6 +1132,88 @@ process.addListener('uncaughtException', function (err) {
 
 ---
 
+# Domain
+
+(Just out of curiosity)
+
+---
+
+Domain Example
+
+```js
+let domain = require('domain').create()
+domain.on('error', function(error){
+  console.log(error)
+})
+domain.run(function(){
+  throw new Error('Failed!')
+})
+```
+
+---
+
+Domain with Async Error Demo
+
+domain-async.js:
+
+```js
+let d = require('domain').create()
+d.on('error', function(e) {
+   console.log('Custom Error: ' + e)
+})
+d.run(function() {
+  setTimeout(function () {
+    throw new Error('Failed!')
+  }, Math.round(Math.random()*100))
+})
+```
+
+---
+
+# Source code for Domain
+
+<https://github.com/nodejs/node/blob/master/lib/domain.js>
+
+```js
+var _domain = [null];
+Object.defineProperty(process, 'domain', {
+  enumerable: true,
+  get: function() {
+    return _domain[0];
+  },
+  set: function(arg) {
+    return _domain[0] = arg;
+  }
+});
+```
+
+---
+
+# Domain overwrites uncaught exception
+
+```js
+if (process.hasUncaughtExceptionCaptureCallback()) {
+  throw new errors.Error('ERR_DOMAIN_CALLBACK_NOT_AVAILABLE');
+}
+```
+
+```js
+process.on('removeListener', (name, listener) => {
+  if (name === 'uncaughtException' &&
+      listener !== domainUncaughtExceptionClear) {
+    // If the domain listener would be the only remaining one, remove it.
+    const listeners = process.listeners('uncaughtException');
+    if (listeners.length === 1 && listeners[0] === domainUncaughtExceptionClear)
+      process.removeListener(name, domainUncaughtExceptionClear);
+  }
+});
+```
+
+^When domains are in use, they claim full ownership of the uncaught exception capture callback.
+
+---
+
+
 # C++ Addons
 
 ---
@@ -1196,6 +1326,16 @@ $ node hello.js
 
 ---
 
+Moaaarr *core* Node
+
+* NAPI
+* Crypto
+* HTTP/2
+* Node modules
+* npm commands and scripts
+
+---
+
 # 30-Second Summary
 
 1. Event Emitters
@@ -1205,35 +1345,37 @@ $ node hello.js
 1. C++ Addons
 1. Domain
 
----
-
-Moaaarr Node
-
-* NAPI
-* Crypto
-* HTTP/2
+^We have covered a lot in the last 60 minutes
 
 ---
 
-# You Don't Know Node Online Course
+# There are big, big, big problems
+
+* 2 days
+* 5 days
+* 8 days
+
+^2 days - won't remember my name and most of what I said
+^5 days - remember only a joke
+^8 days - won't remember being here
+
+---
+
+# New information
+
+* Repetition
+* Immersion
+* Practice
+
+---
+
+# Solution: You Don't Know Node Online Course
 
 ![inline](images/you-dk-node-course-cover-v1.png)
 
 <https://node.university/p/you-dont-know-node>
 
-
 ---
-
-# CodingHorror.com
-
-![inline](images/atwoods_law.png)
-
----
-
-# One Last Thing 👉
-
----
-
 
 # Sign up for Node University NOW!
 
@@ -1244,4 +1386,69 @@ Moaaarr Node
 
 <https://node.university> 🚀
 
+---
 
+# This is how to do it
+
+---
+
+# Take out your laptops or phones :computer: 📱 
+
+Seriously. Do it now!
+
+---
+
+# Go to node.university
+
+(<https://node.university> in Safari, Chrome, Edge)
+
+---
+
+[.hide-footer]
+[.slidenumbers: false]
+
+![fit](images/nodeu-1.png)
+
+^Click/press on Free courses
+
+---
+
+[.hide-footer]
+[.slidenumbers: false]
+
+![fit](images/nodeu-2.png)
+
+^ Click/press on You Don't Know Node
+
+---
+
+[.hide-footer]
+[.slidenumbers: false]
+
+![fit](images/nodeu-3.png)
+
+^Click/Press on enroll
+
+---
+
+[.hide-footer]
+[.slidenumbers: false]
+
+![fit](images/nodeu-4.png)
+
+^Put your email and create a password
+
+
+---
+
+# One Last Thing 👉
+
+---
+
+# CodingHorror.com
+
+![inline](images/atwoods_law.png)
+
+---
+
+# The End
