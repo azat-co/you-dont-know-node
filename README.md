@@ -32,7 +32,7 @@ build-lists: true
 
 ---
 
-# My name is Azat Mardan and I the creator of Node University
+# My name is Azat Mardan and I am the creator of Node University
 
 ---
 
