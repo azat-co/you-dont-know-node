@@ -23,7 +23,7 @@ if (cluster.isMaster) {
   var app = express()
   app.get('*', function(req, res) {
     stats[cluster.worker.process.pid] += 1
-    var l ='cluser '
+    var l ='cluster '
       + cluster.worker.process.pid
       + ' responded \n'
     console.log(l)
